@@ -2,6 +2,8 @@
 
 This is a portfolio website designed to showcase work to job recruiters and provide better opportunities. 
 
+https://sandeepjanapati.github.io/
+
 ## Project Structure
 
 ```
