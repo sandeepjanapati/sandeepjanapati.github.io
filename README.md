@@ -19,23 +19,6 @@ Welcome to my personal portfolio website! This project showcases my skills, expe
 - **JavaScript**: (if applicable) For adding interactivity and dynamic behavior.
 - **Assets**: Includes images, icons, and downloadable resources.
 
-## 📂 Folder Structure
-
-```bash
-/assets
-│
-├── /css
-│   └── styles.css        # Main stylesheet for the website
-│
-├── /img
-│   ├── /profile          # Profile image
-│   ├── /skills           # Icons for technical skills
-│   ├── iit_bhu.png       # Logo of IIT BHU
-│   └── ...               # Other images
-│
-├── /resume
-│   └── resume.pdf        # Resume file available for download
-
 
 ## 🖼️ Preview
 
