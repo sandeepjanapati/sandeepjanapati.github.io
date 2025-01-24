@@ -1,0 +1,651 @@
+/* General Styles */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    scroll-behavior: smooth;
+}
+a {
+    color: #1e90ff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    text-decoration: underline;
+    color: #1a7ac8;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #000;
+    padding: 2rem 1rem; /* Add padding for a more classic look */
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    flex : 1;
+}
+.sidebar .profile {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 1rem;
+}
+.sidebar .profile .profile-image {
+    width: 100px; /* Slightly decrease the size */
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.95); /* Add slight grey border */
+    object-fit: cover; /* Ensure the image covers the entire area */
+    margin: 0 auto;
+}
+.sidebar .nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+    margin-bottom: 0.5rem; /* Add space between links */
+}
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background: #1e90ff;
+    color: #fff;
+    
+}
+
+/* Content */
+.content {
+    margin-left: 270px;
+    padding: 2rem;
+    flex: 3;
+}
+section {
+    padding: 4rem 2rem; /* Add more padding to sections */
+    text-align: left; /* Align content to the left */
+    min-height: 100vh; /* Ensure each section is at least one page long */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    border-bottom: 1px solid #444; /* Add border to separate sections */
+    background-color: #1a1a1a; /* Add background color to sections */
+}
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+section h3 {
+    font-size: 2.5rem; /* Increase the size of the headings */
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0.5rem; /* Space below the headings */
+}
+section h2 {
+    font-size: 2.5rem; /* Increase the size of the headings */
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0.5rem; /* Space below the headings */
+}
+
+.about-content, .education-content, .skills-content, .experience-content, .projects-content, .achievements-content, .contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between the subsections */
+    padding-top: 0; /* Remove top padding */
+}
+
+.intro {
+    display: flex;
+    justify-content: flex-start; /* Align content to the left */
+    align-items: flex-start; /* Align items to the top */
+    flex-direction: column;
+    text-align: left;
+    height: 100vh; /* Make the home section fit the size of the available space */
+    overflow: hidden; /* Prevent scrolling */
+}
+.home-content {
+    max-width: 600px;
+    width: 100%;
+    padding: 2rem; /* Add padding to the home content */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    text-align: left; /* Align all content within the home section to the left */
+}
+h1 {
+    font-size: 3.5rem; /* Increase the size of the name */
+    margin-bottom: 0.1rem; /* Decrease space between name and typing effect */
+    margin-top: 0; /* Ensure there's no extra space above the name */
+}
+.typing-effect {
+    font-size: 2rem; /* Increase the size of the typing effect */
+    display: inline-block;
+    margin-top: 0; /* Ensure there's no extra space above the typing effect */
+    margin-bottom: 1rem; /* Add margin below */
+}
+.description {
+    width: 200%;
+    font-size: 1.2rem; /* Increase the size of the description */
+    margin-bottom: 2rem; /* Add margin below */
+    white-space: normal; /* Ensure the text wraps naturally */
+}
+.social-icons {
+    display: flex;
+    gap: 1rem; /* Add space between the logos */
+    margin-top: 1rem;
+}
+.buttons {
+    margin-top: 1rem;
+    text-align: left; /* Align the button to the left */
+}
+.buttons .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    border: 2px solid white; /* Add white stroke */
+    background: transparent; /* Make background transparent */
+    color: white; /* Set text color to white */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 10px; /* Add curved edges */
+    transition: background 0.3s, color 0.3s; /* Smooth transition for background and text color */
+    pointer-events: auto; /* Ensure the buttons are clickable */
+}
+.buttons .btn:hover {
+    background: white; /* Change background to white on hover */
+    color: black; /* Change text color to black on hover */
+    border-color: white; /* Change border color to white on hover */
+}
+
+/* Apply the same styles to GitHub and web application buttons */
+.github-btn, .webapp-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    border: 2px solid white; /* Add white stroke */
+    background: transparent; /* Make background transparent */
+    color: white; /* Set text color to white */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 10px; /* Add curved edges */
+    transition: background 0.3s, color 0.3s; /* Smooth transition for background and text color */
+    pointer-events: auto; /* Ensure the buttons are clickable */
+}
+
+.github-btn:hover, .webapp-btn:hover {
+    background: white; /* Change background to white on hover */
+    color: black; /* Change text color to black on hover */
+    border-color: white; /* Change border color to white on hover */
+}
+
+/* Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+.project-card {
+    padding: 1rem;
+    background: #222;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.project-card:hover {
+    background: #1e90ff;
+}
+
+/* Contact */
+#contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh; /* Make the contact section fit the size of the browser */
+}
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Ensure the form takes up available space */
+    justify-content: center; /* Center the form vertically */
+}
+input, textarea, button {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+textarea {
+    resize: none;
+}
+button {
+    background: #1e90ff;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+button:hover {
+    background: #1a7ac8;
+}
+
+/* Footer */
+footer {
+    padding: 1rem;
+    background: #000;
+    text-align: center;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Add space between the logos */
+    margin-top: 1rem;
+    flex-direction: column;
+}
+
+
+.social-item {
+    display: flex;
+    align-items: center; /* Vertically align icon and text */
+    gap: 1rem; /* Space between icon and text */
+}
+
+.social-icon {
+    width: 32px; /* Adjust the size as needed */
+    height: 32px; /* Adjust the size as needed */
+    border-radius: 50%;
+    border: 2px solid #fff; /* Add white border */
+    transition: transform 0.3s;
+}
+
+.social-item a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Adjust text size */
+}
+
+.social-item a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.intro-text {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.1rem; /* Adjust this value as needed */
+}
+
+.blue-text {
+    color: #1e90ff; /* Set the typing text color to blue */
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between the subsections */
+    padding-top: 0; /* Remove top padding */
+}
+
+.about-me h3, .interests h3 {
+    font-size: 2rem; /* Size of the headings */
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0.5rem; /* Space below the headings */
+}
+
+.about-me, .interests {
+    padding: 1rem;
+    color: white; /* Text color */
+}
+
+.interests .interest-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 1rem; /* Space between boxes */
+}
+
+.interests .interest-item {
+    display: flex;
+    align-items: center;
+    
+    padding: 1rem;
+    border-radius: 10px; /* Curved edges */
+    margin: 0.5rem; /* Margin to separate the boxes */
+}
+
+.interests .interest-image {
+    width: 50px; /* Size of the images */
+    height: 50px; /* Size of the images */
+    margin-right: 1rem; /* Space between image and text */
+    background: white; /* Background for images */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Curved edges */
+}
+
+.interests .interest-item span {
+    color: white; /* Text color */
+    font-size: 1.2rem; /* Font size */
+}
+
+.interests ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+}
+
+.interests li {
+    margin-bottom: 0.5rem; /* Space between list items */
+}
+
+.interest-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Space between images */
+    margin-top: 1rem;
+}
+
+.interest-image {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    background: white; /* White background for images */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Curved edges */
+}
+
+.education-content, .skills-content, .experience-content, .projects-content, .achievements-content, .contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between the subsections */
+    padding-top: 0; /* Remove top padding */
+}
+
+.about-me, .interests, .education, .online-certifications, .skills, .experience, .projects, .achievements, .contact {
+    padding: 1rem;
+    color: white; /* Text color */
+}
+
+.education-box {
+    /*background: #333; /* Grey background color */
+    padding: 1rem;
+    border-radius: 10px; /* Curved edges */
+    margin-bottom: 1rem; /* Space below the box */
+    color: white; /* Text color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+}
+
+.education-details p, .education-details ul {
+    margin: 0.2rem 0; /* Decrease gap between lines */
+}
+
+.education-box h3 a {
+    color: #1e90ff; /* Link color */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.education-box h3 a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+.education-logo {
+    margin-left: 1rem; /* Space between text and logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iitbhu-logo {
+    width: 240px; /* Increased size */
+    height: auto; /* Maintain aspect ratio */
+    background: white; /* Placeholder background */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Curved edges */
+    padding: 5px; /* Add padding for a classic look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow for a professional look */
+}
+
+.experience {
+    margin-bottom: 40px;
+}
+
+.experience-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    /*background-color: #333;*/
+}
+
+.experience-details {
+    margin: 0.2rem 0;
+    flex: 1;
+}
+
+.experience-details p {
+    margin: 0.1rem 0; /* Decrease the gap between lines */
+}
+
+.experience-details ul {
+    margin: 0.1rem 0; /* Decrease the gap between the responsibilities line and the list */
+    padding-left: 20px; /* Optional: adjust the padding for the list */
+}
+
+.experience-details li {
+    margin: 0.1rem 0; /* Decrease the gap between list items */
+}
+
+.experience-logo {
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.company-logo {
+    width: 250px;
+    height: auto;
+}
+
+.online-certifications .certification-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 1rem; /* Space between boxes */
+}
+
+.online-certifications .certification-item {
+    display: flex;
+    align-items: center;
+    background: #333; /* Darker grey background for boxes */
+    padding: 1rem;
+    border-radius: 10px; /* Curved edges */
+    margin: 0.5rem; /* Margin to separate the boxes */
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* Text color */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+.online-certifications .certification-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+.online-certifications .certification-image {
+    width: 50px; /* Size of the images */
+    height: 50px; /* Size of the images */
+    margin-right: 1rem; /* Space between image and text */
+    background: white; /* Background for images */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Curved edges */
+}
+
+.online-certifications .certification-item span {
+    color: white; /* Text color */
+    font-size: 1.2rem; /* Font size */
+}
+
+.skills-subsection {
+    margin-bottom: 2rem;
+}
+
+.skills-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.skill-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 120px; /* Increased width for rectangular shape */
+    height: 120px; /* Increased height for rectangular shape */
+    justify-content: center;
+}
+
+.skill-image {
+    width: 70px; /* Adjust the width as needed */
+    height: 70px; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.projects {
+    margin: 20px 0;
+}
+
+.projects-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px; /* Curved edges */
+    /*background-color: #333;*/
+}
+
+.projects-details {
+    margin: 0.2rem 0;
+    flex: 1;
+}
+
+.projects-details h3 a {
+    text-decoration: none;
+    color: #1e90ff; /* Link color */
+    font-size: 0.8em; /* Reduced font size */
+}
+
+.projects-details p {
+    margin: 0.1rem 0;
+}
+
+
+
+.projects-details ul {
+    margin: 0.1rem 0; /* Decrease the gap between the responsibilities line and the list */
+    padding-left: 20px; /* Optional: adjust the padding for the list */
+}
+
+.projects-details li {
+    margin: 0.1rem 0; /* Decrease the gap between list items */
+}
+
+
+.projects-logo {
+    margin-left: 20px;
+}
+
+.project-logo {
+    width: 100px;
+    height: auto;
+}
+
+
+/* llllllllll */
+
+.project-buttons {
+    margin-top: 10px;
+}
+
+.project-buttons .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    border: 2px solid white; /* Add white stroke */
+    background: transparent; /* Make background transparent */
+    color: white; /* Set text color to white */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 10px; /* Add curved edges */
+    transition: background 0.3s, color 0.3s; /* Smooth transition for background and text color */
+}
+
+.project-buttons .btn:hover {
+    background: white; /* Change background to white on hover */
+    color: black; /* Change text color to black on hover */
+    border-color: white; /* Change border color to white on hover */
+}
+
+#achievements ul li {
+    margin-bottom: 1rem; /* Adjust the value as needed */
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.image-wrapper img {
+    display: block;
+}
+
+.image-wrapper .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0); /* Transparent overlay */
+    z-index: 1;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+
+.align-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.align-left .social-icon {
+    margin-right: 10px; /* Adjust spacing between icons as needed */
+}
+
+.contact-name {
+    font-size: 2em; /* Increase the font size */
+}
+
