@@ -1,6 +1,7 @@
 # Portfolio Website
 
 Welcome to my personal portfolio website! This project showcases my skills, experiences, and academic journey in a professional and visually appealing manner.
+Access the website using : https://sandeepjanapati.github.io/
 
 ## 🌟 Features
 - **Home Section**: A brief introduction with my name and a dynamic typing effect to highlight my role.
