@@ -715,4 +715,13 @@ footer {
     footer {
         padding: 1rem;
     }
+
+
+    .interests .interest-box {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .interests .interest-item {
+        justify-content: flex-start; /* Align items to the start */
+    }
 }
