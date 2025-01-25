@@ -732,4 +732,19 @@ footer {
     .online-certifications .certification-item {
         justify-content: flex-start; /* Align items to the start */
     }
+
+    .education-box {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .education-logo {
+        margin-left: 0; /* Remove horizontal margin */
+        margin-top: 1rem; /* Add vertical spacing */
+        align-self: center; /* Center the logo */
+    }
+
+    .iitbhu-logo {
+        width: 150px; /* Adjust logo size for mobile */
+    }
 }
