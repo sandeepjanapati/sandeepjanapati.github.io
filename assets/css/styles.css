@@ -738,10 +738,16 @@ footer {
         align-items: flex-start; /* Align items to the start */
     }
 
+    .education-details h3 {
+        display: flex;
+        flex-direction: column; /* Ensure logo can be placed inline */
+    }
+
     .education-logo {
         margin-left: 0; /* Remove horizontal margin */
-        margin-top: 1rem; /* Add vertical spacing */
-        align-self: center; /* Center the logo */
+        margin-top: 0.5rem; /* Add small spacing above the logo */
+        margin-bottom: 0.5rem; /* Add small spacing below the logo */
+        align-self: flex-start; /* Align the logo with the text */
     }
 
     .iitbhu-logo {
