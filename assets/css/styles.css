@@ -738,19 +738,30 @@ footer {
         align-items: flex-start; /* Align items to the start */
     }
 
-    .education-details h3 {
-        display: flex;
-        flex-direction: column; /* Ensure logo can be placed inline */
-    }
-
     .education-logo {
         margin-left: 0; /* Remove horizontal margin */
-        margin-top: 0.5rem; /* Add small spacing above the logo */
-        margin-bottom: 0.5rem; /* Add small spacing below the logo */
-        align-self: flex-start; /* Align the logo with the text */
+        margin-top: 1rem; /* Add vertical spacing */
+        align-self: center; /* Center the logo */
     }
 
     .iitbhu-logo {
         width: 150px; /* Adjust logo size for mobile */
     }
+
+    .experience-box {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .experience-logo {
+        margin-left: 0; /* Remove horizontal margin */
+        margin-top: 1rem; /* Add vertical spacing */
+        align-self: center; /* Center the logo */
+    }
+
+    .company-logo {
+        width: 150px; /* Adjust logo size for mobile */
+    }
+
+    
 }
