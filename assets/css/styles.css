@@ -649,3 +649,70 @@ footer {
     font-size: 2em; /* Increase the font size */
 }
 
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* General Adjustments */
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: static;
+        padding: 1rem;
+        box-shadow: none;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    /* Section and Text Adjustments */
+    section {
+        padding: 2rem 1rem;
+        min-height: auto;
+    }
+
+    h1 {
+        font-size: 2rem; /* Adjust for smaller screens */
+    }
+
+    h2, h3 {
+        font-size: 1.5rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .typing-effect {
+        font-size: 1.2rem;
+    }
+
+    /* Button Adjustments */
+    .buttons .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Grid Adjustments */
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    /* Contact Form */
+    form {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    input, textarea, button {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 1rem;
+    }
+}
