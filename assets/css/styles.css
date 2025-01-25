@@ -123,7 +123,6 @@ section h2 {
     overflow: hidden; /* Prevent scrolling */
 }
 .home-content {
-    max-width: 600px;
     width: 100%;
     padding: 2rem; /* Add padding to the home content */
     box-sizing: border-box; /* Ensure padding is included in the width */
@@ -141,7 +140,6 @@ h1 {
     margin-bottom: 1rem; /* Add margin below */
 }
 .description {
-    width: 200%;
     font-size: 1.2rem; /* Increase the size of the description */
     margin-bottom: 2rem; /* Add margin below */
     white-space: normal; /* Ensure the text wraps naturally */
