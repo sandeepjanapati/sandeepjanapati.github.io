@@ -25,7 +25,7 @@ Access the website using : https://sandeepjanapati.github.io/
 ## 🖼️ Preview
 
 
-![Project Demo](website.gif)
+[![Project Demo](website.gif)](https://sandeepjanapati.github.io/)
 
 
 
