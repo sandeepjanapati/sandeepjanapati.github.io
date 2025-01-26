@@ -46,7 +46,7 @@ Access the website using : https://sandeepjanapati.github.io/
 **Janapati Sandeep**
 
 - 📧 Email: [janapati.sandeep.min21@itbhu.ac.in](mailto:janapati.sandeep.min21@itbhu.ac.in)
-- 🌐 LinkedIn Profile: [LinkedIn]([https://www.linkedin.com/in/your-profile-link](https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239/))
+- 🌐 LinkedIn: https://www.linkedin.com/in/sandeep-yadav-janapati-22337a239/
 - 🏛️ Address: IIT BHU, Varanasi, Uttar Pradesh, India
 
 ## 📝 License
