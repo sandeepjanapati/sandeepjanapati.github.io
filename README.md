@@ -24,6 +24,11 @@ Access the website using : https://sandeepjanapati.github.io/
 
 ## 🖼️ Preview
 
+
+![Project Demo](website.gif)
+
+
+
 | Section    | Description                                        |
 |------------|----------------------------------------------------|
 | Home       | Introduces me with a dynamic typing effect and navigation options. |
