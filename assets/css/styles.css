@@ -676,7 +676,21 @@ footer {
 /* Mobile Styles */
 @media (max-width: 768px) {
 
+    
 
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40px; /* Adjust height as needed */
+        background-color: #000; /* Black background */
+        display: flex;
+        align-items: center;
+        padding: 0 1rem; /* Add padding for spacing */
+        z-index: 1000; /* Ensure it stays above other content */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for depth */
+    }
 
     /* Hamburger Menu */
     .hamburger-menu {
