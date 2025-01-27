@@ -676,6 +676,18 @@ footer {
 /* Mobile Styles */
 @media (max-width: 768px) {
 
+
+    .skill-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 10px;
+        width: 100px; /* Increased width for rectangular shape */
+        height: 100px; /* Increased height for rectangular shape */
+        justify-content: center;
+    }
+
     
 
     .header {
