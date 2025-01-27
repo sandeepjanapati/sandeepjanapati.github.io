@@ -77,6 +77,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+
+    // Select the hamburger menu and sidebar
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const sidebar = document.getElementById('sidebar');
+    
+    // Toggle the sidebar on hamburger menu click
+    hamburgerMenu.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+    
+    
+    // Hide sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+        const isClickInsideSidebar = sidebar.contains(e.target);
+        const isClickOnHamburger = hamburgerMenu.contains(e.target);
+    
+        if (!isClickInsideSidebar && !isClickOnHamburger) {
+            sidebar.classList.remove('active');
+        }
+    });
+
     // Smooth scrolling for buttons
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
