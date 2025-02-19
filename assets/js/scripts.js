@@ -114,6 +114,51 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        centeredSlides: true,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        mousewheel: {
+            forceToAxis: true,
+            sensitivity: 1,
+        },
+        grabCursor: true,
+        resistanceRatio: 0.85,
+        freeMode: false,
+        keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        on: {
+            touchEnd: function (swiper) {
+                let threshold = swiper.width * 0.2;
+                let diff = swiper.touches.startX - swiper.touches.currentX;
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        swiper.slideNext();
+                    } else {
+                        swiper.slidePrev();
+                    }
+                } else {
+                    swiper.slideTo(swiper.activeIndex);
+                }
+            }
+        }
+    });
 
     // Smooth scrolling for buttons
     document.querySelectorAll('.btn').forEach(btn => {

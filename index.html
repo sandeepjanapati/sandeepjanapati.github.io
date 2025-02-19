@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Janapati Sandeep | Data Scientist</title>
     <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <!-- Google tag (gtag.js) -->
@@ -329,59 +330,63 @@
             </section>
 
             <section id="projects">
-    <div class="projects-content">
-        <div class="projects">
-            <h2>Projects</h2>
+                <div class="projects-content">
+                    <div class="swiper mySwiper">
+                        <h2>Projects</h2>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="project-content"> <!--- Added a container for better styling -->
+                                    <h3><a href="https://github.com/sandeepjanapati/Ground-Vibration-Calculator" target="_blank">Prediction of Ground Vibration using Machine Learning </a></h3>
+                                    <p>Undergraduate Project</p>
+                                    <p>Jan 2024 - Nov 2024</p>
+                                    <ul>
+                                        <li>Predicted ground vibration from rock blasting using machine learning for safety and operational planning</li>
+                                        <li>Processed real-world blasting data to train models for accurate vibration prediction</li>
+                                        <li>Built a user-friendly website for real-time vibration calculation and analysis</li>
+                                        <li>Exposure: Python, Pandas, NumPy, Matplotlib, Seaborn, Scikitlearn, TensorFlow, Keras</li>
+                                    </ul>
+                                    <div class="project-buttons"> <!--- Use a consistent class name -->
+                                        <a href="https://sandeepjanapati.github.io/Ground-Vibration-Calculator/" class="btn webapp-btn" target="_blank">Web Application</a>
+                                        <a href="https://github.com/sandeepjanapati/Ground-Vibration-Calculator" class="btn github-btn" target="_blank">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-content"> <!--- Added a container for better styling -->
+                                    <h3><a href="https://github.com/sandeepjanapati/feature-extraction-from-images" target="_blank">Feature Extraction from Images</a></h3>
+                                    <p>Amazon ML Challenge - 2024</p>
+                                    <ul>
+                                        <li>Extracted entity values from images using OCR and machine learning techniques</li>
+                                        <li>Applied feature engineering to enhance text recognition accuracy</li>
+                                        <li>Utilized classification models for precise entity value extraction</li>
+                                        <li>Exposure: Python, Pandas, OpenCV, EasyOCR, PyTesseract, tqdm, Regex, Image Processing</li>
+                                    </ul>
+                                    <div class="project-buttons"> <!--- Use a consistent class name -->
+                                        <a href="https://github.com/sandeepjanapati/feature-extraction-from-images" class="btn github-btn" target="_blank">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-content"> <!--- Added a container for better styling -->
+                                    <h3><a>Car Price Prediction using Machine Learning</a></h3>
+                                    <p>Project from Kaggle</p>
+                                    <ul>
+                                        <li>Built a machine learning model using PyTorch to predict car prices based on various features</li>
+                                        <li>Implemented data preprocessing, feature engineering, and hyperparameter tuning for accurate predictions</li>
+                                        <li>Achieved high performance by optimizing the model and evaluating it with real-world datasets</li>
+                                        <li>Exposure: Python, Pandas, PyTorch, Data Preprocessing, Linear Regression, Model Training, Model Optimization</li>
+                                    </ul>
+                                </div>
+                            </div>
             
-            <div class="projects-box">
-                <div class="projects-details">
-                    <h3><a href="https://github.com/sandeepjanapati/Ground-Vibration-Calculator" target="_blank">Prediction of Ground Vibration using Machine Learning </a></h3>
-                    <p>Undergraduate Project</p>
-                    <p>Jan 2024 - Nov 2024</p>
-                    <ul>
-                        <li>Predicted ground vibration from rock blasting using machine learning for safety and operational planning</li>
-                        <li>Processed real-world blasting data to train models for accurate vibration prediction</li>
-                        <li>Built a user-friendly website for real-time vibration calculation and analysis</li>
-                        <li>Exposure: Python, Pandas, NumPy, Matplotlib, Seaborn, Scikitlearn, TensorFlow, Keras</li>
-                    </ul>
-                    <div class="buttons">
-                        <a href="https://sandeepjanapati.github.io/Ground-Vibration-Calculator/" class="btn webapp-btn" target="_blank">Web Application</a>
-                        <a href="https://github.com/sandeepjanapati/Ground-Vibration-Calculator" class="btn github-btn" target="_blank">GitHub</a>
+            
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="projects-box">
-                <div class="projects-details">
-                    <h3><a href="https://github.com/sandeepjanapati/feature-extraction-from-images" target="_blank">Feature Extraction from Images</a></h3>
-                    <p>Amazon ML Challenge - 2024</p>
-                    <ul>
-                        <li>Extracted entity values from images using OCR and machine learning techniques</li>
-                        <li>Applied feature engineering to enhance text recognition accuracy</li>
-                        <li>Utilized classification models for precise entity value extraction</li>
-                        <li>Exposure: Python, Pandas, OpenCV, EasyOCR, PyTesseract, tqdm, Regex, Image Processing</li>
-                    </ul>
-                    <div class="buttons">
-                        <a href="https://github.com/sandeepjanapati/feature-extraction-from-images" class="btn github-btn" target="_blank">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="projects-box">
-                <div class="projects-details">
-                    <h3><a>Car Price Prediction using Machine Learning</a></h3>
-                    <p>Project from Kaggle</p>
-                    <ul>
-                        <li>Built a machine learning model using PyTorch to predict car prices based on various features</li>
-                        <li>Implemented data preprocessing, feature engineering, and hyperparameter tuning for accurate predictions</li>
-                        <li>Achieved high performance by optimizing the model and evaluating it with real-world datasets</li>
-                        <li>Exposure: Python, Pandas, PyTorch, Data Preprocessing, Linear Regression, Model Training, Model Optimization</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
             <section id="achievements">
                 <div class="achievements-content">
@@ -437,6 +442,7 @@
 
 </section>
 <div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="assets/js/scripts.js"></script>
     <button id="back-to-top" class="back-to-top">↑</button>
 </body>
