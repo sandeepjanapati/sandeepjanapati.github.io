@@ -56,9 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Prevent scrolling from home section to about section
+        // Prevent errors if optional .home-section is not present
         const homeSection = document.querySelector('.home-section');
-        if (pageYOffset > homeSection.offsetHeight) {
+        if (homeSection && pageYOffset > homeSection.offsetHeight) {
             window.scrollTo(0, homeSection.offsetHeight);
         }
     });
