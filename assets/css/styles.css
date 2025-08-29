@@ -534,6 +534,7 @@ footer {
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 8px;
+    margin-bottom: 40px;
     /*background-color: #333;*/
 }
 
@@ -561,8 +562,10 @@ footer {
 }
 
 .company-logo {
-    width: 250px;
+    width: 200px;
     height: auto;
+    margin-right: 40px;
+    margin-left: 40px;
 }
 
 .online-certifications .certification-box {
