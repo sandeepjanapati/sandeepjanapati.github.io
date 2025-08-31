@@ -139,8 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
             onlyInViewport: true,
         },
         autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
+            delay: 2000,
+            disableOnInteraction: true,
             pauseOnMouseEnter: true,
         },
         on: {

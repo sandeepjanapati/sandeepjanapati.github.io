@@ -960,3 +960,42 @@ footer {
 
     
 }
+
+/* Animation for project content inside Swiper slides */
+.swiper-slide .project-content h3,
+.swiper-slide .project-content p,
+.swiper-slide .project-content ul {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.swiper-slide-active .project-content h3 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s; /* Stagger the animation */
+}
+
+.swiper-slide-active .project-content p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.swiper-slide-active .project-content ul {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+/* Transition effects for Swiper slides */
+.swiper-slide {
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+}
