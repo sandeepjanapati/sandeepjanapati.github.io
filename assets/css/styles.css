@@ -11,7 +11,34 @@ body {
     line-height: 1.6;
     display: flex;
     scroll-behavior: smooth;
+
+     /* Add these lines */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
 }
+
+
+/* --- START: Welcome Video Styles --- */
+#welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Black background for fallback */
+    z-index: 10001; /* Higher than everything else */
+    opacity: 1;
+    transition: opacity 2s ease-out; /* The fade-out effect */
+}
+
+#welcome-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This is the magic part */
+}
+/* --- END: Welcome Video Styles --- */
+
 
 .swiper {
     width: 90%; /* Slightly reduced width for better margins */

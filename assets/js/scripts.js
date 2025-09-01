@@ -160,6 +160,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // --- START of Welcome Video Logic ---
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    const welcomeVideo = document.getElementById('welcome-video');
+
+    if (welcomeOverlay && welcomeVideo) {
+        let isFadingOut = false; // Our gatekeeper to ensure the fade happens only once
+
+        // This event fires multiple times per second as the video plays
+        welcomeVideo.addEventListener('timeupdate', function() {
+            // Check if the current time is past 6 seconds AND we haven't started fading yet
+            if (welcomeVideo.currentTime >= 6 && !isFadingOut) {
+                
+                // 1. Lock the gate so this code never runs again
+                isFadingOut = true;
+
+                // 2. Start the 2-second fade out by setting opacity to 0
+                welcomeOverlay.style.opacity = '0';
+
+                // 3. Set up a listener for when the fade is finished
+                welcomeOverlay.addEventListener('transitionend', function() {
+                    // Hide the overlay completely so the site is clickable
+                    welcomeOverlay.style.display = 'none';
+                });
+            }
+        });
+    }
+    // --- END of Welcome Video Logic ---
+
+
     // Smooth scrolling for buttons
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
@@ -172,4 +201,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+
+// --- START of Screenshot Deterrent ---
+
+document.addEventListener('keyup', function(e) {
+    if (e.key == 'PrintScreen') {
+        // Prevents the screenshot from being taken in some browsers
+        navigator.clipboard.writeText('');
+        alert('Screenshots are disabled on this website.');
+    }
+});
+
+// A more robust way to listen for the print screen key
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key == 'p') {
+        alert('Printing is disabled on this website.');
+        e.preventDefault();
+        e.stopImmediatePropagation();
+    }
 });
