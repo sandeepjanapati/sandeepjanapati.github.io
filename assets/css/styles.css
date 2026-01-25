@@ -36,6 +36,19 @@ body {
     cursor: grab;
     margin: 0 10px; /* Consistent margin */
     overflow: hidden; /* Prevent content from overflowing */
+    flex-shrink: 0; /* Prevent flex shrinking */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow: hidden;
 }
 
 
@@ -47,6 +60,9 @@ body {
 .swiper-slide h3 {
     font-size: 1.8em; /* Slightly larger heading */
     margin-bottom: 10px;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .swiper-slide h3 a {
@@ -56,6 +72,19 @@ body {
 .swiper-slide p { /* Style for project description and timeframe */
     color: #b0b0b0; /* Lighter text color */
     margin-bottom: 20px;
+}
+
+.swiper-slide ul {
+    margin: 0;
+    padding-left: 20px;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.swiper-slide ul li {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 .project-title {
     font-size: 1.6em;
