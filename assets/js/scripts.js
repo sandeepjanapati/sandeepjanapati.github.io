@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
     const typedText = document.getElementById('typed-text');
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     type();
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -55,12 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.classList.add('active');
             }
         });
-
-        // Prevent scrolling from home section to about section
-        const homeSection = document.querySelector('.home-section');
-        if (pageYOffset > homeSection.offsetHeight) {
-            window.scrollTo(0, homeSection.offsetHeight);
-        }
     });
 
     // Trigger fade-in effect on load
@@ -72,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Disable right-click on images
     document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('contextmenu', function(e) {
+        img.addEventListener('contextmenu', function (e) {
             e.preventDefault();
         });
     });
@@ -81,18 +75,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Select the hamburger menu and sidebar
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const sidebar = document.getElementById('sidebar');
-    
+
     // Toggle the sidebar on hamburger menu click
     hamburgerMenu.addEventListener('click', () => {
         sidebar.classList.toggle('active');
     });
-    
-    
+
+
     // Hide sidebar when clicking outside
     document.addEventListener('click', (e) => {
         const isClickInsideSidebar = sidebar.contains(e.target);
         const isClickOnHamburger = hamburgerMenu.contains(e.target);
-    
+
         if (!isClickInsideSidebar && !isClickOnHamburger) {
             sidebar.classList.remove('active');
         }
@@ -109,16 +103,17 @@ document.addEventListener('DOMContentLoaded', function() {
             backToTopBtn.classList.remove('show');
         }
     });
-    
+
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-    
+
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: "auto",
-        spaceBetween: 20,
+        spaceBetween: 30,
         centeredSlides: true,
         loop: true,
+        speed: 500,
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
@@ -163,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Smooth scrolling for buttons
     document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href.startsWith('#')) {
                 e.preventDefault();
@@ -177,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // --- START of Screenshot Deterrent ---
 
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     if (e.key == 'PrintScreen') {
         // Prevents the screenshot from being taken in some browsers
         navigator.clipboard.writeText('');
@@ -186,7 +181,7 @@ document.addEventListener('keyup', function(e) {
 });
 
 // A more robust way to listen for the print screen key
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.ctrlKey && e.key == 'p') {
         alert('Printing is disabled on this website.');
         e.preventDefault();
