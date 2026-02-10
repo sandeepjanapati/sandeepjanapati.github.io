@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 current = section.getAttribute('id');
             }
 
-            // Add visible class for fade-in effect
             if (pageYOffset >= sectionTop - window.innerHeight / 1.3) {
                 section.classList.add('visible');
             }
@@ -57,14 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Trigger fade-in effect on load
     sections.forEach(section => {
         if (window.pageYOffset >= section.offsetTop - window.innerHeight / 1.3) {
             section.classList.add('visible');
         }
     });
 
-    // Disable right-click on images
     document.querySelectorAll('img').forEach(img => {
         img.addEventListener('contextmenu', function (e) {
             e.preventDefault();
@@ -72,17 +69,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // Select the hamburger menu and sidebar
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const sidebar = document.getElementById('sidebar');
 
-    // Toggle the sidebar on hamburger menu click
     hamburgerMenu.addEventListener('click', () => {
         sidebar.classList.toggle('active');
     });
 
 
-    // Hide sidebar when clicking outside
     document.addEventListener('click', (e) => {
         const isClickInsideSidebar = sidebar.contains(e.target);
         const isClickOnHamburger = hamburgerMenu.contains(e.target);
@@ -156,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // Smooth scrolling for buttons
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -170,17 +163,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// --- START of Screenshot Deterrent ---
 
 document.addEventListener('keyup', function (e) {
     if (e.key == 'PrintScreen') {
-        // Prevents the screenshot from being taken in some browsers
         navigator.clipboard.writeText('');
         alert('Screenshots are disabled on this website.');
     }
 });
 
-// A more robust way to listen for the print screen key
 document.addEventListener('keydown', function (e) {
     if (e.ctrlKey && e.key == 'p') {
         alert('Printing is disabled on this website.');

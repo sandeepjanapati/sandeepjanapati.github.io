@@ -1,4 +1,3 @@
-/* General Styles */
 html {
     scroll-behavior: smooth;
 }
@@ -12,24 +11,16 @@ body {
     line-height: 1.6;
     display: flex;
     scroll-behavior: smooth;
-
-    /* Add these lines */
     -webkit-user-select: none;
-    /* Safari */
     -ms-user-select: none;
-    /* IE 10+ */
     user-select: none;
-    /* Standard syntax */
 }
 
 
 .swiper {
     width: 90%;
-    /* Slightly reduced width for better margins */
     margin: 0 auto;
-    /* Center the swiper */
     padding: 40px 0;
-    /* Increased padding for better spacing */
 }
 
 .swiper-slide {
@@ -60,7 +51,6 @@ body {
     overflow: hidden;
 }
 
-/* Project Header with title and type */
 .project-header {
     margin-bottom: 1rem;
 }
@@ -81,7 +71,6 @@ body {
     text-decoration: underline;
 }
 
-/* Project Type Badge - minimal, understated */
 .project-type {
     display: inline-block;
     font-size: 0.8rem;
@@ -91,7 +80,6 @@ body {
     font-weight: 500;
 }
 
-/* Project Highlights - fills available space */
 .project-highlights {
     flex: 1;
     margin: 0;
@@ -109,7 +97,6 @@ body {
     margin-bottom: 0;
 }
 
-/* Tech Stack - pushed to bottom */
 .project-tech {
     font-size: 0.85rem;
     color: #777;
@@ -118,7 +105,6 @@ body {
     letter-spacing: 0.3px;
 }
 
-/* Swiper slide hover - subtle */
 .swiper-slide:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
@@ -216,14 +202,12 @@ img {
     user-drag: none;
 }
 
-/* Container */
 .container {
     display: flex;
     flex-direction: column;
 }
 
 
-/* Back-to-Top Button */
 .back-to-top {
     position: fixed;
     bottom: 20px;
@@ -248,12 +232,10 @@ img {
 
 
 
-/* Sidebar */
 .sidebar {
     width: 250px;
     background: #000;
     padding: 2rem 1rem;
-    /* Add padding for a more classic look */
     position: fixed;
     height: 100%;
     overflow-y: auto;
@@ -271,13 +253,10 @@ img {
 
 .sidebar .profile .profile-image {
     width: 100px;
-    /* Slightly decrease the size */
     height: 100px;
     border-radius: 50%;
     border: 3px solid rgba(255, 255, 255, 0.95);
-    /* Add slight grey border */
     object-fit: cover;
-    /* Ensure the image covers the entire area */
     margin: 0 auto;
 }
 
@@ -288,7 +267,6 @@ img {
     border-radius: 5px;
     transition: background 0.3s, color 0.3s;
     margin-bottom: 0.1rem;
-    /* Add space between links */
 }
 
 .sidebar .nav-link.active,
@@ -298,7 +276,6 @@ img {
 
 }
 
-/* Content */
 .content {
     margin-left: 270px;
     padding: 2rem;
@@ -307,18 +284,13 @@ img {
 
 section {
     padding: 4rem 2rem;
-    /* Add more padding to sections */
     text-align: left;
-    /* Align content to the left */
     min-height: 100vh;
-    /* Ensure each section is at least one page long */
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     border-bottom: 1px solid #444;
-    /* Add border to separate sections */
     background-color: #1a1a1a;
-    /* Add background color to sections */
 }
 
 section.visible {
@@ -328,20 +300,14 @@ section.visible {
 
 section h3 {
     font-size: 2.5rem;
-    /* Increase the size of the headings */
     margin-top: 0;
-    /* Remove top margin */
     margin-bottom: 0.5rem;
-    /* Space below the headings */
 }
 
 section h2 {
     font-size: 2.5rem;
-    /* Increase the size of the headings */
     margin-top: 0;
-    /* Remove top margin */
     margin-bottom: 0.5rem;
-    /* Space below the headings */
 }
 
 .about-content,
@@ -354,33 +320,24 @@ section h2 {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    /* Space between the subsections */
     padding-top: 0;
-    /* Remove top padding */
 }
 
 .intro {
     display: flex;
     justify-content: flex-start;
-    /* Align content to the left */
     align-items: flex-start;
-    /* Align items to the top */
     flex-direction: column;
     text-align: left;
     height: 100vh;
-    /* Make the home section fit the size of the available space */
     overflow: hidden;
-    /* Prevent scrolling */
 }
 
 .home-content {
     width: 100%;
     padding: 2rem;
-    /* Add padding to the home content */
     box-sizing: border-box;
-    /* Ensure padding is included in the width */
     text-align: left;
-    /* Align all content within the home section to the left */
 }
 
 h1 {
@@ -390,7 +347,6 @@ h1 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Intro text styling */
 .intro-text {
     font-size: 1.2rem;
     letter-spacing: 1px;
@@ -400,21 +356,15 @@ h1 {
 
 .typing-effect {
     font-size: 2rem;
-    /* Increase the size of the typing effect */
     display: inline-block;
     margin-top: 0;
-    /* Ensure there's no extra space above the typing effect */
     margin-bottom: 1rem;
-    /* Add margin below */
 }
 
 .description {
     font-size: 1.2rem;
-    /* Increase the size of the description */
     margin-bottom: 2rem;
-    /* Add margin below */
     white-space: normal;
-    /* Ensure the text wraps naturally */
 }
 
 .social-icons {
@@ -448,39 +398,27 @@ h1 {
     transform: translateY(-2px);
 }
 
-/* Apply the same styles to GitHub and web application buttons */
 .github-btn,
 .webapp-btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     margin: 0.5rem;
     border: 2px solid white;
-    /* Add white stroke */
     background: transparent;
-    /* Make background transparent */
     color: white;
-    /* Set text color to white */
     text-decoration: none;
-    /* Remove underline from links */
     border-radius: 10px;
-    /* Add curved edges */
     transition: background 0.3s, color 0.3s;
-    /* Smooth transition for background and text color */
     pointer-events: auto;
-    /* Ensure the buttons are clickable */
 }
 
 .github-btn:hover,
 .webapp-btn:hover {
     background: white;
-    /* Change background to white on hover */
     color: black;
-    /* Change text color to black on hover */
     border-color: white;
-    /* Change border color to white on hover */
 }
 
-/* Projects */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -499,13 +437,11 @@ h1 {
     background: #1e90ff;
 }
 
-/* Contact */
 #contact {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    /* Make the contact section fit the size of the browser */
 }
 
 form {
@@ -514,9 +450,7 @@ form {
     display: flex;
     flex-direction: column;
     flex: 1;
-    /* Ensure the form takes up available space */
     justify-content: center;
-    /* Center the form vertically */
 }
 
 input,
@@ -543,7 +477,6 @@ button:hover {
     background: #1a7ac8;
 }
 
-/* Footer */
 footer {
     padding: 1rem;
     background: #000;
@@ -554,7 +487,6 @@ footer {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    /* Add space between the logos */
     margin-top: 1rem;
     flex-direction: column;
 }
@@ -563,34 +495,25 @@ footer {
 .social-item {
     display: flex;
     align-items: center;
-    /* Vertically align icon and text */
     gap: 1rem;
-    /* Space between icon and text */
 }
 
 .social-icon {
     width: 32px;
-    /* Adjust the size as needed */
     height: 32px;
-    /* Adjust the size as needed */
     border-radius: 50%;
     border: 2px solid #fff;
-    /* Add white border */
     transition: transform 0.3s;
 }
 
 .social-item a {
     color: white;
-    /* Link color */
     text-decoration: none;
-    /* Remove underline */
     font-size: 1rem;
-    /* Adjust text size */
 }
 
 .social-item a:hover {
     text-decoration: underline;
-    /* Add underline on hover */
 }
 
 .social-icon:hover {
@@ -601,46 +524,36 @@ footer {
     font-size: 1.5rem;
     color: #fff;
     margin-bottom: 0.1rem;
-    /* Adjust this value as needed */
 }
 
 .blue-text {
     color: #1e90ff;
-    /* Set the typing text color to blue */
 }
 
 .about-content {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    /* Space between the subsections */
     padding-top: 0;
-    /* Remove top padding */
 }
 
 .about-me h3,
 .interests h3 {
     font-size: 2rem;
-    /* Size of the headings */
     margin-top: 0;
-    /* Remove top margin */
     margin-bottom: 0.5rem;
-    /* Space below the headings */
 }
 
 .about-me,
 .interests {
     padding: 1rem;
     color: white;
-    /* Text color */
 }
 
 .interests .interest-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Three columns */
     gap: 1rem;
-    /* Space between boxes */
 }
 
 .interests .interest-item {
@@ -649,63 +562,45 @@ footer {
 
     padding: 1rem;
     border-radius: 10px;
-    /* Curved edges */
     margin: 0.5rem;
-    /* Margin to separate the boxes */
 }
 
 .interests .interest-image {
     width: 50px;
-    /* Size of the images */
     height: 50px;
-    /* Size of the images */
     margin-right: 1rem;
-    /* Space between image and text */
     background: white;
-    /* Background for images */
     border: 1px solid #ccc;
-    /* Light border */
     border-radius: 5px;
-    /* Curved edges */
 }
 
 .interests .interest-item span {
     color: white;
-    /* Text color */
     font-size: 1.2rem;
-    /* Font size */
 }
 
 .interests ul {
     list-style-type: none;
-    /* Remove bullet points */
     padding: 0;
 }
 
 .interests li {
     margin-bottom: 0.5rem;
-    /* Space between list items */
 }
 
 .interest-images {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    /* Space between images */
     margin-top: 1rem;
 }
 
 .interest-image {
     width: 100px;
-    /* Adjust size as needed */
     height: 100px;
-    /* Adjust size as needed */
     background: white;
-    /* White background for images */
     border: 1px solid #ccc;
-    /* Light border */
     border-radius: 5px;
-    /* Curved edges */
 }
 
 .education-content,
@@ -717,9 +612,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    /* Space between the subsections */
     padding-top: 0;
-    /* Remove top padding */
 }
 
 .about-me,
@@ -733,18 +626,13 @@ footer {
 .contact {
     padding: 1rem;
     color: white;
-    /* Text color */
 }
 
 .education-box {
-    /*background: #333; /* Grey background color */
     padding: 1rem;
     border-radius: 10px;
-    /* Curved edges */
     margin-bottom: 1rem;
-    /* Space below the box */
     color: white;
-    /* Text color */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -754,24 +642,19 @@ footer {
 .education-details p,
 .education-details ul {
     margin: 0.2rem 0;
-    /* Decrease gap between lines */
 }
 
 .education-box h3 a {
     color: #1e90ff;
-    /* Link color */
     text-decoration: none;
-    /* Remove underline from links */
 }
 
 .education-box h3 a:hover {
     text-decoration: underline;
-    /* Underline on hover */
 }
 
 .education-logo {
     margin-left: 1rem;
-    /* Space between text and logo */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -779,19 +662,12 @@ footer {
 
 .iitbhu-logo {
     width: 240px;
-    /* Increased size */
     height: auto;
-    /* Maintain aspect ratio */
     background: white;
-    /* Placeholder background */
     border: 1px solid #ccc;
-    /* Light border */
     border-radius: 5px;
-    /* Curved edges */
     padding: 5px;
-    /* Add padding for a classic look */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* Add subtle shadow for a professional look */
 }
 
 .experience {
@@ -806,7 +682,6 @@ footer {
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 40px;
-    /*background-color: #333;*/
 }
 
 .experience-details {
@@ -816,19 +691,15 @@ footer {
 
 .experience-details p {
     margin: 0.1rem 0;
-    /* Decrease the gap between lines */
 }
 
 .experience-details ul {
     margin: 0.1rem 0;
-    /* Decrease the gap between the responsibilities line and the list */
     padding-left: 20px;
-    /* Optional: adjust the padding for the list */
 }
 
 .experience-details li {
     margin: 0.1rem 0;
-    /* Decrease the gap between list items */
 }
 
 .experience-logo {
@@ -846,56 +717,38 @@ footer {
 .online-certifications .certification-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Three columns */
     gap: 1rem;
-    /* Space between boxes */
 }
 
 .online-certifications .certification-item {
     display: flex;
     align-items: center;
     background: #333;
-    /* Darker grey background for boxes */
     padding: 1rem;
     border-radius: 10px;
-    /* Curved edges */
     margin: 0.5rem;
-    /* Margin to separate the boxes */
     text-decoration: none;
-    /* Remove underline from links */
     color: white;
-    /* Text color */
     transition: transform 0.3s, box-shadow 0.3s;
-    /* Smooth transition for hover effects */
 }
 
 .online-certifications .certification-item:hover {
     transform: translateY(-5px);
-    /* Slight lift on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Shadow effect on hover */
 }
 
 .online-certifications .certification-image {
     width: 50px;
-    /* Size of the images */
     height: 50px;
-    /* Size of the images */
     margin-right: 1rem;
-    /* Space between image and text */
     background: white;
-    /* Background for images */
     border: 1px solid #ccc;
-    /* Light border */
     border-radius: 5px;
-    /* Curved edges */
 }
 
 .online-certifications .certification-item span {
     color: white;
-    /* Text color */
     font-size: 1.2rem;
-    /* Font size */
 }
 
 .skills-subsection {
@@ -916,17 +769,13 @@ footer {
     padding: 1rem;
     border-radius: 10px;
     width: 120px;
-    /* Increased width for rectangular shape */
     height: 120px;
-    /* Increased height for rectangular shape */
     justify-content: center;
 }
 
 .skill-image {
     width: 70px;
-    /* Adjust the width as needed */
     height: 70px;
-    /* Adjust the height as needed */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -948,8 +797,6 @@ footer {
     padding: 10px;
     margin-top: 10px;
     border-radius: 10px;
-    /* Curved edges */
-    /*background-color: #333;*/
 }
 
 .projects-details {
@@ -960,9 +807,7 @@ footer {
 .projects-details h3 a {
     text-decoration: none;
     color: #1e90ff;
-    /* Link color */
     font-size: 0.8em;
-    /* Reduced font size */
 }
 
 .projects-details p {
@@ -973,14 +818,11 @@ footer {
 
 .projects-details ul {
     margin: 0.1rem 0;
-    /* Decrease the gap between the responsibilities line and the list */
     padding-left: 20px;
-    /* Optional: adjust the padding for the list */
 }
 
 .projects-details li {
     margin: 0.1rem 0;
-    /* Decrease the gap between list items */
 }
 
 
@@ -994,8 +836,6 @@ footer {
 }
 
 
-/* llllllllll */
-
 .project-buttons {
     margin-top: 10px;
 }
@@ -1005,29 +845,19 @@ footer {
     padding: 0.75rem 1.5rem;
     margin: 0.5rem;
     border: 2px solid white;
-    /* Add white stroke */
     background: transparent;
-    /* Make background transparent */
     color: white;
-    /* Set text color to white */
     text-decoration: none;
-    /* Remove underline from links */
     border-radius: 10px;
-    /* Add curved edges */
     transition: background 0.3s, color 0.3s;
-    /* Smooth transition for background and text color */
 }
 
 .project-buttons .btn:hover {
     background: white;
-    /* Change background to white on hover */
     color: black;
-    /* Change text color to black on hover */
     border-color: white;
-    /* Change border color to white on hover */
 }
 
-/* Achievements section - styled bullets */
 #achievements ul {
     list-style: none;
     padding-left: 0;
@@ -1049,8 +879,6 @@ footer {
     font-size: 1.1rem;
 }
 
-/* Contact section */
-/* Contact section */
 .contact-content {
     align-items: flex-start;
     text-align: left;
@@ -1068,15 +896,12 @@ footer {
     -webkit-text-fill-color: initial;
     display: block;
     word-break: break-word;
-    /* Ensure such huge text breaks */
 }
 
 .contact p:not(.contact-name) {
     font-size: 1rem;
-    /* Very small and subtle */
     color: #888;
     margin-bottom: 1.5rem;
-    /* Reduced from 4rem */
     font-weight: 600;
     letter-spacing: 2px;
     margin-left: 5px;
@@ -1087,19 +912,16 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    /* Reduced from 1.5rem */
     align-items: flex-start;
     width: 100%;
 }
 
-/* Social items - Minimalist Text + Icon */
 .social-item {
     display: flex;
     align-items: center;
     gap: 1.5rem;
     font-size: 1.25rem;
     padding: 0;
-    /* No box padding */
     border: none;
     background: transparent;
     transition: transform 0.3s ease;
@@ -1130,7 +952,6 @@ footer {
     height: 35px;
     object-fit: cover;
     border-radius: 50%;
-    /* Re-apply round style */
     filter: none;
     mix-blend-mode: normal;
     opacity: 1;
@@ -1157,10 +978,8 @@ footer {
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0);
-    /* Transparent overlay */
     z-index: 1;
     pointer-events: none;
-    /* Allow clicks to pass through */
 }
 
 
@@ -1172,17 +991,12 @@ footer {
 
 .align-left .social-icon {
     margin-right: 10px;
-    /* Adjust spacing between icons as needed */
 }
 
 .contact-name {
     font-size: 4em;
-    /* Increase the font size */
 }
 
-/* ============================================
-   TABLET BREAKPOINT (769px - 1024px)
-   ============================================ */
 @media (max-width: 1024px) and (min-width: 769px) {
     section {
         padding: 3rem 1.5rem;
@@ -1201,17 +1015,14 @@ footer {
         height: 110px;
     }
 
-    /* Interest grid - 2 columns on tablet */
     .interests .interest-box {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Certification grid - 2 columns on tablet */
     .online-certifications .certification-box {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Project cards - tablet */
     .swiper-slide {
         width: 80%;
         height: 360px;
@@ -1231,7 +1042,6 @@ footer {
     }
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
 
     .swiper {
@@ -1294,9 +1104,7 @@ footer {
         padding: 1rem;
         border-radius: 10px;
         width: 100px;
-        /* Increased width for rectangular shape */
         height: 100px;
-        /* Increased height for rectangular shape */
         justify-content: center;
     }
 
@@ -1308,20 +1116,14 @@ footer {
         left: 0;
         width: 100%;
         height: 60px;
-        /* Adjust height as needed */
         background-color: #000;
-        /* Black background */
         display: flex;
         align-items: center;
         padding: 0 1rem;
-        /* Add padding for spacing */
         z-index: 1000;
-        /* Ensure it stays above other content */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        /* Optional: Add a shadow for depth */
     }
 
-    /* Hamburger Menu */
     .hamburger-menu {
         position: fixed;
         display: flex;
@@ -1362,7 +1164,6 @@ footer {
         left: 0;
     }
 
-    /* General Adjustments */
     body {
         flex-direction: column;
     }
@@ -1373,7 +1174,6 @@ footer {
         padding: 0rem;
     }
 
-    /* Section and Text Adjustments */
     section {
         padding: 2rem 1rem;
         min-height: auto;
@@ -1382,17 +1182,13 @@ footer {
 
     h1 {
         font-size: 2rem;
-        /* Adjust for smaller screens */
     }
 
     .projects-details h3 {
         text-decoration: none;
         color: #1e90ff;
-        /* Link color */
         font-size: 2.25em;
-        /* Reduced font size */
         line-height: 1;
-        /* Decrease space between wrapped lines */
     }
 
     h2,
@@ -1408,18 +1204,15 @@ footer {
         font-size: 1.2rem;
     }
 
-    /* Button Adjustments */
     .buttons .btn {
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
     }
 
-    /* Grid Adjustments */
     .projects-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
-    /* Contact Form */
     form {
         max-width: 100%;
         padding: 1rem;
@@ -1431,7 +1224,6 @@ footer {
         font-size: 0.9rem;
     }
 
-    /* Footer */
     footer {
         padding: 1rem;
     }
@@ -1439,70 +1231,53 @@ footer {
 
     .interests .interest-box {
         grid-template-columns: 1fr;
-        /* Single column layout */
     }
 
     .interests .interest-item {
         justify-content: flex-start;
-        /* Align items to the start */
     }
 
     .online-certifications .certification-box {
         grid-template-columns: 1fr;
-        /* Single column layout for mobile */
     }
 
     .online-certifications .certification-item {
         justify-content: flex-start;
-        /* Align items to the start */
     }
 
     .education-box {
         flex-direction: column;
-        /* Stack items vertically */
         align-items: flex-start;
-        /* Align items to the start */
     }
 
     .education-logo {
         margin-left: 0;
-        /* Remove horizontal margin */
         margin-top: 1rem;
-        /* Add vertical spacing */
         align-self: center;
-        /* Center the logo */
     }
 
     .iitbhu-logo {
         width: 150px;
-        /* Adjust logo size for mobile */
     }
 
     .experience-box {
         flex-direction: column;
-        /* Stack items vertically */
         align-items: flex-start;
-        /* Align items to the start */
     }
 
     .experience-logo {
         margin-left: 0;
-        /* Remove horizontal margin */
         margin-top: 1rem;
-        /* Add vertical spacing */
         align-self: center;
-        /* Center the logo */
     }
 
     .company-logo {
         width: 150px;
-        /* Adjust logo size for mobile */
     }
 
 
 }
 
-/* Animation for project content inside Swiper slides */
 .swiper-slide .project-content h3,
 .swiper-slide .project-content p,
 .swiper-slide .project-content ul {
@@ -1515,7 +1290,6 @@ footer {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.2s;
-    /* Stagger the animation */
 }
 
 .swiper-slide-active .project-content p {
@@ -1530,7 +1304,6 @@ footer {
     transition-delay: 0.4s;
 }
 
-/* Transition effects for Swiper slides */
 .swiper-slide {
     transition: transform 0.4s ease, opacity 0.4s ease;
     opacity: 0.5;
@@ -1542,11 +1315,6 @@ footer {
     transform: scale(1);
 }
 
-/* ============================================
-   SUBTLE PROFESSIONAL ENHANCEMENTS
-   ============================================ */
-
-/* Smoother transitions for interactive elements */
 a,
 button,
 .btn,
@@ -1558,14 +1326,12 @@ button,
     transition: all 0.3s ease;
 }
 
-/* Better card shadows on hover - subtle depth */
 .education-box:hover,
 .experience-box:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Clean skill icon hover - simple scale */
 .skill-box {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -1575,45 +1341,34 @@ button,
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Smooth project card hover */
 .swiper-slide:hover {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
-/* Certification item subtle hover */
 .certification-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Profile image subtle hover */
 .sidebar .profile .profile-image:hover {
     transform: scale(1.03);
 }
 
-/* Social icon subtle scale */
 .social-icons a:hover {
     transform: scale(1.1);
 }
 
-/* Back to top button smooth hover */
 .back-to-top:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* ============================================
-   ALIGNMENT & SPACING POLISH
-   ============================================ */
-
-/* Button text alignment */
 .buttons .btn,
 .github-btn,
 .webapp-btn {
     text-align: center;
 }
 
-/* Project buttons - consistent sizing */
 .project-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -1629,33 +1384,27 @@ button,
     font-size: 0.9rem;
 }
 
-/* Interest item consistent sizing */
 .interest-item {
     min-height: 60px;
 }
 
-/* Certification item consistent sizing */
 .certification-item {
     min-height: 70px;
 }
 
-/* Nav link subtle underline effect */
 .sidebar .nav-link {
     position: relative;
 }
 
-/* Section heading consistent margin */
 section h2 {
     margin-bottom: 1.5rem;
     letter-spacing: 0.5px;
 }
 
-/* Section h3 subtle adjustment */
 section h3 {
     letter-spacing: 0.3px;
 }
 
-/* Education/Experience details line height */
 .education-details p,
 .experience-details p {
     line-height: 1.6;
@@ -1664,36 +1413,27 @@ section h3 {
 
 
 
-
-/* Social icon in contact smooth scale */
 .social-icon {
     transition: transform 0.2s ease;
 }
 
-/* Typing text smooth cursor */
 .blue-text {
     letter-spacing: 0.5px;
 }
 
-/* Description better readability */
 .description {
     line-height: 1.7;
     letter-spacing: 0.2px;
 }
 
-/* Swiper pagination dot smoother */
 .swiper-pagination-bullet {
     transition: transform 0.2s ease, background 0.2s ease;
 }
 
-/* Back to top smooth appearance */
 .back-to-top {
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* ============================================
-   SMALL MOBILE SCREENS (480px and below)
-   ============================================ */
 @media (max-width: 480px) {
     h1 {
         font-size: 1.6rem;
