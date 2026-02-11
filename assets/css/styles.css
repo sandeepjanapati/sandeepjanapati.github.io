@@ -34,7 +34,6 @@ body {
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
         box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: grab;
-    margin: 0 15px;
     overflow: hidden;
     flex-shrink: 0;
     display: flex;
