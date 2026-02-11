@@ -1087,13 +1087,13 @@ footer {
 
     .swiper-button-next,
     .swiper-button-prev {
-        width: 24px;
-        height: 24px;
+        width: 0px;
+        height: 0px;
     }
 
     .swiper-button-next::after,
     .swiper-button-prev::after {
-        font-size: 12px;
+        font-size: 0px;
     }
 
     .skill-box {
@@ -1519,12 +1519,12 @@ section h3 {
 
     .swiper-button-next,
     .swiper-button-prev {
-        width: 15px;
-        height: 15px;
+        width: 0px;
+        height: 0px;
     }
 
     .swiper-button-next::after,
     .swiper-button-prev::after {
-        font-size: 7px;
+        font-size: 0px;
     }
 }
