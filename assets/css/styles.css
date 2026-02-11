@@ -1087,13 +1087,13 @@ footer {
 
     .swiper-button-next,
     .swiper-button-prev {
-        width: 36px;
-        height: 36px;
+        width: 24px;
+        height: 24px;
     }
 
     .swiper-button-next::after,
     .swiper-button-prev::after {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .skill-box {
@@ -1503,5 +1503,28 @@ section h3 {
     .iitbhu-logo,
     .company-logo {
         width: 120px;
+    }
+
+    .project-buttons {
+        flex-wrap: nowrap;
+        gap: 0.4rem;
+    }
+
+    .project-buttons .btn {
+        flex: 1;
+        min-width: 0;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 15px;
+        height: 15px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 7px;
     }
 }
