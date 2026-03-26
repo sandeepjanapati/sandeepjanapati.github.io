@@ -41,26 +41,29 @@
                     <div class="overlay"></div>
                 </div>
             </div>
-            <a href="#home" class="nav-link active">Home</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#education" class="nav-link">Education</a>
-            <a href="#skills" class="nav-link">Skills</a>
-            <a href="#experience" class="nav-link">Experience</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#achievements" class="nav-link">Achievements</a>
-            <a href="#contact" class="nav-link">Contact</a>
-            <a href="assets/resume/resume.pdf" target="_blank" class="nav-link resume-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="margin-right: 6px; vertical-align: -2px;">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>Resume
-            </a>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="assets/resume/resume.pdf" target="_blank" class="nav-link resume-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-right: 6px; vertical-align: -2px;">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>Resume
+                </a>
+            </div>
         </nav>
         <div class="content">
             <section id="home" class="intro fixed-home">
+                <div id="particles-js"></div>
                 <div class="home-content">
                     <p class="intro-text">Hi, I'm</p>
                     <h1>Janapati Sandeep</h1>
@@ -510,17 +513,21 @@
                     <div class="achievements">
                         <h2>Achievements</h2>
                         <ul>
-                            <li>Achieved a maximum contest rating of 1473 on the LeetCode coding platform by
+                            <li>Achieved a maximum contest rating of <span class="counter" data-target="1473">0</span>
+                                on the LeetCode coding platform by
                                 consistently solving complex competitive programming challenges, demonstrating strong
                                 problem-solving skills and algorithmic expertise</li>
-                            <li>Achieved a rating of 1054 on Chess.com by consistently demonstrating strategic thinking,
+                            <li>Achieved a rating of <span class="counter" data-target="1054">0</span> on Chess.com by
+                                consistently demonstrating strategic thinking,
                                 tactical skills, and a deep understanding of chess gameplay through regular
                                 participation in matches and tournaments</li>
-                            <li>Secured 3rd place in First Cut 2022, a short film competition organized by the Cine
+                            <li>Secured <span class="counter" data-target="3" data-suffix="rd">0</span> place in First
+                                Cut 2022, a short film competition organized by the Cine
                                 Club, IIT BHU, by directing a creative and impactful short film, showcasing storytelling
                                 and cinematic skills</li>
                             <li>Successfully participated in the Cyclothon event of SPARDHA'22, completing a remarkable
-                                record distance of 100 km, demonstrating endurance, determination, and athletic
+                                record distance of <span class="counter" data-target="100">0</span> km, demonstrating
+                                endurance, determination, and athletic
                                 excellence</li>
                             <li>Organized "Fake Investors," an auction-based game where participants bid on startup
                                 ideas using virtual money. Developed formula-based code in Microsoft Excel for efficient
@@ -577,6 +584,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="assets/js/scripts.js"></script>
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
 </body>

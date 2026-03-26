@@ -9,7 +9,6 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    display: flex;
     scroll-behavior: smooth;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -232,64 +231,94 @@ img {
 
 
 .sidebar {
-    width: 250px;
+    width: 20vw;
     background: #000;
-    padding: 2rem 1rem;
+    padding: 0;
     position: fixed;
-    height: 100%;
-    overflow-y: auto;
+    height: 100vh;
+    overflow-y: hidden;
+    /* Remove scroll unless absolutely necessary */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    flex: 1;
+    display: flex;
+    flex-direction: column;
     z-index: 100;
+    box-sizing: border-box;
+    /* Use flex to distribute space naturally but gracefully */
 }
 
+/* Profile Section: Top Anchored, Flexible but Compact */
 .sidebar .profile {
-    text-align: center;
-    margin-bottom: 2rem;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-bottom: 1px solid #444;
-    padding-bottom: 1rem;
+    padding: clamp(12px, 2.8vh, 28px) 0 clamp(12px, 2.3vh, 22px) 0;
+    margin-bottom: clamp(20px, 4.5vh, 40px);
 }
 
 .sidebar .profile .profile-image {
-    width: 100px;
-    height: 100px;
+    height: clamp(70px, 14vh, 120px);
+    width: clamp(70px, 14vh, 120px);
     border-radius: 50%;
     border: 3px solid rgba(255, 255, 255, 0.95);
     object-fit: cover;
-    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+/* Navigation Menu: Fills Remaining Space, Centered Content */
+.sidebar .nav-menu {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 15px;
+    margin-bottom: clamp(15px, 3vh, 35px);
 }
 
 .sidebar .nav-link {
-    display: block;
-    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    padding: clamp(8px, 1.7vh, 16px) 1.5rem;
     color: #fff;
+    transition: all 0.3s ease;
+    font-size: clamp(14px, 2.3vh, 18px);
+    text-decoration: none;
     border-radius: 5px;
-    transition: background 0.3s, color 0.3s;
-    margin-bottom: 0.1rem;
+    margin: clamp(1px, 0.2vh, 4px) 0;
+    white-space: nowrap;
 }
 
-.sidebar .nav-link.active,
-.sidebar .nav-link:hover {
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
     background: #1e90ff;
     color: #fff;
-
+    transform: translateX(5px);
+    box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
 }
 
-.content {
-    margin-left: 270px;
-    padding: 2rem;
-    flex: 3;
+.sidebar .nav-link svg {
+    width: clamp(14px, 2vh, 20px);
+    height: clamp(14px, 2vh, 20px);
+    margin-right: 12px;
 }
 
 section {
-    padding: 4rem 2rem;
+    width: 76vw;
+    margin-right: 0;
+    margin-left: 22vw;
+    padding: 4vw 4vw;
     text-align: left;
     min-height: 100vh;
+    height: auto;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     border-bottom: 1px solid #444;
     background-color: #1a1a1a;
+    overflow: hidden;
+
+    box-sizing: border-box;
+
 }
 
 section.visible {
@@ -322,6 +351,15 @@ section h2 {
     padding-top: 0;
 }
 
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
 .intro {
     display: flex;
     justify-content: flex-start;
@@ -330,13 +368,15 @@ section h2 {
     text-align: left;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 .home-content {
-    width: 100%;
-    padding: 2rem;
-    box-sizing: border-box;
+    width: 95%;
+    padding: 2vw;
     text-align: left;
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
@@ -344,13 +384,6 @@ h1 {
     margin-bottom: 0.1rem;
     margin-top: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.intro-text {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    color: #ccc;
-    margin-bottom: 0.25rem;
 }
 
 .typing-effect {
@@ -885,7 +918,7 @@ footer {
 }
 
 .contact-name {
-    font-size: clamp(8rem, 25vw, 18em);
+    font-size: 4rem;
     margin-bottom: 0.1rem;
     font-weight: 600;
     letter-spacing: -0.05em;
@@ -992,13 +1025,21 @@ footer {
     margin-right: 10px;
 }
 
-.contact-name {
-    font-size: 4em;
-}
 
 @media (max-width: 1024px) and (min-width: 769px) {
+    .sidebar {
+        width: 22.5vw;
+        overflow-y: hidden;
+        flex-direction: column;
+        z-index: 100;
+        box-sizing: border-box;
+    }
+
     section {
-        padding: 3rem 1.5rem;
+        width: 73.5vw;
+        padding: 2vw 2vw;
+        margin-left: 24.5vw;
+        margin-right: 0;
     }
 
     h1 {
@@ -1028,6 +1069,17 @@ footer {
         padding: 35px;
     }
 
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 25px;
+        height: 25px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 12px;
+    }
+
     .project-header h3 {
         font-size: 1.5em;
     }
@@ -1042,6 +1094,19 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+    .contact-name {
+        font-size: 3.25rem;
+        margin-bottom: 0.1rem;
+        font-weight: 600;
+        letter-spacing: -0.05em;
+        line-height: 0.85;
+        color: #fff;
+        background: none;
+        -webkit-text-fill-color: initial;
+        display: block;
+        word-break: break-word;
+    }
 
     .swiper {
         width: 100%;
@@ -1167,16 +1232,11 @@ footer {
         flex-direction: column;
     }
 
-
-    .content {
-        margin-left: 0;
-        padding: 0rem;
-    }
-
     section {
-        padding: 2rem 1rem;
-        min-height: auto;
+        width: 100vw;
         padding-top: 60px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     h1 {
@@ -1433,7 +1493,27 @@ section h3 {
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.counter {
+    color: #1e90ff;
+    font-weight: 700;
+}
+
 @media (max-width: 480px) {
+    .contact-name {
+        font-size: 2.75rem;
+    }
+
     h1 {
         font-size: 1.6rem;
     }
@@ -1446,9 +1526,16 @@ section h3 {
         font-size: 0.9rem;
     }
 
+    .home-content {
+        width: 95%;
+    }
+
     section {
-        padding: 1.5rem 0.75rem;
+        width: 100vw;
+        padding: 4vw 4vw;
         padding-top: 50px;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .skill-box {

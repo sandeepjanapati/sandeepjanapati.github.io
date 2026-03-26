@@ -161,6 +161,71 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    const staggerSelectors = [
+        '.skill-box',
+        '.certification-item',
+        '.interest-item',
+        '.education-box',
+        '.experience-box',
+        '#achievements ul li'
+    ];
+
+    staggerSelectors.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('stagger-item');
+        });
+    });
+
+    const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const items = entry.target.querySelectorAll('.stagger-item');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('revealed');
+                    }, index * 100);
+                });
+                staggerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('section').forEach(section => {
+        staggerObserver.observe(section);
+    });
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const suffix = counter.getAttribute('data-suffix') || '';
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function updateCount(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.round(eased * target);
+                        counter.textContent = current + suffix;
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        }
+                    }
+
+                    requestAnimationFrame(updateCount);
+                });
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('#achievements').forEach(section => {
+        counterObserver.observe(section);
+    });
 });
 
 
@@ -178,3 +243,85 @@ document.addEventListener('keydown', function (e) {
         e.stopImmediatePropagation();
     }
 });
+
+if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: ['#ffffff', '#1e90ff', '#87ceeb']
+            },
+            shape: {
+                type: 'circle'
+            },
+            opacity: {
+                value: 0.4,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 1,
+                    opacity_min: 0.1,
+                    sync: false
+                }
+            },
+            size: {
+                value: 3,
+                random: true,
+                anim: {
+                    enable: true,
+                    speed: 2,
+                    size_min: 0.5,
+                    sync: false
+                }
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#1e90ff',
+                opacity: 0.2,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 1.5,
+                direction: 'none',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                },
+                onclick: {
+                    enable: true,
+                    mode: 'push'
+                },
+                resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 0.5
+                    }
+                },
+                push: {
+                    particles_nb: 3
+                }
+            }
+        },
+        retina_detect: true
+    });
+}
