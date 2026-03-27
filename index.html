@@ -8,6 +8,9 @@
     <meta name="description"
         content="Janapati Sandeep - Data Scientist & ML Engineer from IIT BHU. Expertise in Python, Machine Learning, Deep Learning, NLP, and AI-driven solutions.">
     <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -22,7 +25,11 @@
     </script>
 </head>
 
-<body>
+<body class="loading">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
 
     <div class="container">
 
@@ -37,7 +44,7 @@
         <nav class="sidebar" id="sidebar">
             <div class="profile">
                 <div class="image-wrapper">
-                    <img src="assets/img/profile/profile.jpg" alt="Profile Image" class="profile-image">
+                    <img src="assets/img/profile/profile.jpg" alt="Profile Image" class="profile-image" loading="lazy">
                     <div class="overlay"></div>
                 </div>
             </div>
@@ -61,8 +68,8 @@
                 </a>
             </div>
         </nav>
-        <div class="content">
-            <section id="home" class="intro fixed-home">
+        <main class="content">
+            <section id="home" class="intro">
                 <div id="particles-js"></div>
                 <div class="home-content">
                     <p class="intro-text">Hi, I'm</p>
@@ -76,15 +83,15 @@
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/in/janapatisandeep" target="_blank" rel="noopener noreferrer"
                             aria-label="LinkedIn Profile">
-                            <img src="assets/img/linkedin.jpg" alt="LinkedIn" class="social-icon">
+                            <img src="assets/img/linkedin.jpg" alt="LinkedIn" class="social-icon" loading="lazy">
                         </a>
                         <a href="https://github.com/sandeepjanapati" target="_blank" rel="noopener noreferrer"
                             aria-label="GitHub Profile">
-                            <img src="assets/img/github.png" alt="GitHub" class="social-icon">
+                            <img src="assets/img/github.png" alt="GitHub" class="social-icon" loading="lazy">
                         </a>
                         <a href="https://www.kaggle.com/janapatisandeep" target="_blank" rel="noopener noreferrer"
                             aria-label="Kaggle Profile">
-                            <img src="assets/img/kaggle.jpg" alt="Kaggle" class="social-icon">
+                            <img src="assets/img/kaggle.jpg" alt="Kaggle" class="social-icon" loading="lazy">
                         </a>
                     </div>
                     <div class="buttons">
@@ -110,30 +117,33 @@
                         <h2>Interests</h2>
                         <div class="interest-box">
                             <div class="interest-item">
-                                <img src="assets/img/interests/ds.png" alt="Data Science" class="interest-image">
+                                <img src="assets/img/interests/ds.png" alt="Data Science" class="interest-image"
+                                    loading="lazy">
                                 <span>Data Science</span>
                             </div>
                             <div class="interest-item">
-                                <img src="assets/img/interests/ml.png" alt="Machine Learning" class="interest-image">
+                                <img src="assets/img/interests/ml.png" alt="Machine Learning" class="interest-image"
+                                    loading="lazy">
                                 <span>Machine Learning</span>
                             </div>
                             <div class="interest-item">
-                                <img src="assets/img/interests/da.jpg" alt="Data Analytics" class="interest-image">
+                                <img src="assets/img/interests/da.jpg" alt="Data Analytics" class="interest-image"
+                                    loading="lazy">
                                 <span>Data Analytics</span>
                             </div>
                             <div class="interest-item">
                                 <img src="assets/img/interests/AI.jpg" alt="Artificial Intelligence"
-                                    class="interest-image">
+                                    class="interest-image" loading="lazy">
                                 <span>Artificial Intelligence</span>
                             </div>
                             <div class="interest-item">
                                 <img src="assets/img/interests/nlp.webp" alt="Natural Language Processing"
-                                    class="interest-image">
+                                    class="interest-image" loading="lazy">
                                 <span>Natural Language Processing</span>
                             </div>
                             <div class="interest-item">
                                 <img src="assets/img/interests/llm.jpg" alt="Large Language Models"
-                                    class="interest-image">
+                                    class="interest-image" loading="lazy">
                                 <span>Large Language Models</span>
                             </div>
                         </div>
@@ -155,10 +165,8 @@
                                 <p>Degree: Mining Engineering</p>
                                 <p>CGPA: 8.01/10</p>
                                 <p>Relevant Courseworks:</p>
-                                <ul>
-                                    <li>Ground Vibration Prediction using Machine Learning</li>
-                                    <li>Coal Quality Analysis using Machine Learning</li>
-                                </ul>
+                                <p> -> Ground Vibration Prediction using Machine Learning</p>
+                                <p> -> Coal Quality Analysis using Machine Learning</p>
                             </div>
                             <div class="education-logo">
                                 <a href="https://iitbhu.ac.in/" target="_blank" rel="noopener noreferrer">
@@ -169,7 +177,7 @@
                         </div>
                     </div>
                     <div class="online-certifications">
-                        <h2>Online Certifications</h2>
+                        <h2>Certifications</h2>
                         <div class="certification-box">
                             <a href="https://coursera.org/share/f1d9ba091734f1d8f8a1768d38ed99e0" target="_blank"
                                 rel="noopener noreferrer" class="certification-item">
@@ -193,7 +201,8 @@
                             <a href="https://coursera.org/share/605630807d63baf82e029afd7947f3c6" target="_blank"
                                 rel="noopener noreferrer" class="certification-item">
                                 <img src="assets\img\online_certifications\ibm.jpg"
-                                    alt="Python for Data Science AI & Development" class="certification-image">
+                                    alt="Python for Data Science AI & Development" class="certification-image"
+                                    loading="lazy">
                                 <span>Python for Data Science AI & Development</span>
                             </a>
                             <a href="https://coursera.org/share/cb118535d9b5e974f541982dab8d1fd8" target="_blank"
@@ -221,31 +230,32 @@
                         <div class="skills-boxes">
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/python.png" alt="Python" class="skill-img">
+                                    <img src="assets/img/skills/python.png" alt="Python" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>Python</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/c.png" alt="C" class="skill-img">
+                                    <img src="assets/img/skills/c.png" alt="C" class="skill-img" loading="lazy">
                                 </div>
                                 <span>C </span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/cpp.png" alt="C++" class="skill-img">
+                                    <img src="assets/img/skills/cpp.png" alt="C++" class="skill-img" loading="lazy">
                                 </div>
                                 <span>C++</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/sql.png" alt="SQL" class="skill-img">
+                                    <img src="assets/img/skills/sql.png" alt="SQL" class="skill-img" loading="lazy">
                                 </div>
                                 <span>SQL</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/mysql.png" alt="MySQL" class="skill-img">
+                                    <img src="assets/img/skills/mysql.png" alt="MySQL" class="skill-img" loading="lazy">
                                 </div>
                                 <span>MySQL</span>
                             </div>
@@ -256,55 +266,62 @@
                         <div class="skills-boxes">
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/pandas.png" alt="Pandas" class="skill-img">
+                                    <img src="assets/img/skills/pandas.png" alt="Pandas" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>Pandas</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/numpy.png" alt="NumPy" class="skill-img">
+                                    <img src="assets/img/skills/numpy.png" alt="NumPy" class="skill-img" loading="lazy">
                                 </div>
                                 <span>NumPy</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/matplotlib.png" alt="Matplotlib" class="skill-img">
+                                    <img src="assets/img/skills/matplotlib.png" alt="Matplotlib" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>Matplotlib</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/seaborn.svg" alt="seaborn" class="skill-img">
+                                    <img src="assets/img/skills/seaborn.svg" alt="seaborn" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>Seaborn</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/tensorflow.png" alt="TensorFlow" class="skill-img">
+                                    <img src="assets/img/skills/tensorflow.png" alt="TensorFlow" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>TensorFlow</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/sklearn.png" alt="Scikitlearn" class="skill-img">
+                                    <img src="assets/img/skills/sklearn.png" alt="Scikitlearn" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>Scikitlearn</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/keras.png" alt="Keras" class="skill-img">
+                                    <img src="assets/img/skills/keras.png" alt="Keras" class="skill-img" loading="lazy">
                                 </div>
                                 <span>Keras</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/pytorch.png" alt="PyTorch" class="skill-img">
+                                    <img src="assets/img/skills/pytorch.png" alt="PyTorch" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>PyTorch</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/opencv.png" alt="OpenCV" class="skill-img">
+                                    <img src="assets/img/skills/opencv.png" alt="OpenCV" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>OpenCV</span>
                             </div>
@@ -315,31 +332,34 @@
                         <div class="skills-boxes">
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/git.png" alt="git" class="skill-img">
+                                    <img src="assets/img/skills/git.png" alt="git" class="skill-img" loading="lazy">
                                 </div>
                                 <span>Git</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/jupyter.png" alt="jupyter" class="skill-img">
+                                    <img src="assets/img/skills/jupyter.png" alt="jupyter" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>Notebook</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/aws.png" alt="aws" class="skill-img">
+                                    <img src="assets/img/skills/aws.png" alt="aws" class="skill-img" loading="lazy">
                                 </div>
                                 <span>AWS</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/tableau.png" alt="tableau" class="skill-img">
+                                    <img src="assets/img/skills/tableau.png" alt="tableau" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>Tableau</span>
                             </div>
                             <div class="skill-box">
                                 <div class="skill-image">
-                                    <img src="assets/img/skills/powerbi.png" alt="powerbi" class="skill-img">
+                                    <img src="assets/img/skills/powerbi.png" alt="powerbi" class="skill-img"
+                                        loading="lazy">
                                 </div>
                                 <span>PowerBI</span>
                             </div>
@@ -401,109 +421,120 @@
 
             <section id="projects">
                 <div class="projects-content">
-                    <div class="swiper mySwiper">
+                    <div class="projects">
                         <h2>Projects</h2>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="project-content">
-                                    <div class="project-header">
-                                        <h3><a href="https://sandeepjanapati.github.io/Ground-Vibration-Calculator/"
-                                                target="_blank" rel="noopener noreferrer">Ground Vibration
-                                                Prediction</a></h3>
-                                        <span class="project-type">Research Project</span>
-                                    </div>
-                                    <ul class="project-highlights">
-                                        <li>ML model for predicting ground vibration from rock blasting for mining
-                                            safety</li>
-                                        <li>Processed real-world blasting data to train accurate prediction models</li>
-                                        <li>Built a web calculator for real-time vibration analysis</li>
-                                    </ul>
-                                    <div class="project-tech">
-                                        Python · TensorFlow · Keras · Scikit-learn · Pandas
-                                    </div>
-                                    <div class="project-buttons">
-                                        <a href="https://sandeepjanapati.github.io/Ground-Vibration-Calculator/"
-                                            class="btn webapp-btn" target="_blank" rel="noopener noreferrer">Website</a>
-                                        <a href="https://github.com/sandeepjanapati/Ground-Vibration-Calculator"
-                                            class="btn github-btn" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="project-content">
-                                    <div class="project-header">
-                                        <h3><a href="https://github.com/sandeepjanapati/feature-extraction-from-images"
-                                                target="_blank" rel="noopener noreferrer">Feature Extraction from
-                                                Images</a></h3>
-                                        <span class="project-type">Competition</span>
-                                    </div>
-                                    <ul class="project-highlights">
-                                        <li>Extracted entity values from images using OCR and ML techniques</li>
-                                        <li>Applied feature engineering to enhance text recognition accuracy</li>
-                                        <li>Built classification models for precise entity value extraction</li>
-                                    </ul>
-                                    <div class="project-tech">
-                                        Python · OpenCV · EasyOCR · PyTesseract · Pandas
-                                    </div>
-                                    <div class="project-buttons">
-                                        <a href="https://github.com/sandeepjanapati/feature-extraction-from-images"
-                                            class="btn github-btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="project-content">
+                                        <div class="project-header">
+                                            <h3><a href="https://sandeepjanapati.github.io/Ground-Vibration-Calculator/"
+                                                    target="_blank" rel="noopener noreferrer">Ground Vibration
+                                                    Prediction</a></h3>
+                                            <span class="project-type">Research Project</span>
+                                        </div>
+                                        <ul class="project-highlights">
+                                            <li>ML model for predicting ground vibration from rock blasting for mining
+                                                safety</li>
+                                            <li>Processed real-world blasting data to train accurate prediction models
+                                            </li>
+                                            <li>Built a web calculator for real-time vibration analysis</li>
+                                        </ul>
+                                        <div class="project-tech">
+                                            Python · TensorFlow · Keras · Scikit-learn · Pandas
+                                        </div>
+                                        <div class="project-buttons">
+                                            <a href="https://sandeepjanapati.github.io/Ground-Vibration-Calculator/"
+                                                class="btn webapp-btn" target="_blank"
+                                                rel="noopener noreferrer">Website</a>
+                                            <a href="https://github.com/sandeepjanapati/Ground-Vibration-Calculator"
+                                                class="btn github-btn" target="_blank"
+                                                rel="noopener noreferrer">GitHub</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="project-content">
-                                    <div class="project-header">
-                                        <h3><a href="https://bolgzenai.web.app/" target="_blank"
-                                                rel="noopener noreferrer">BlogZenAi</a></h3>
-                                        <span class="project-type">Personal Project</span>
-                                    </div>
-                                    <ul class="project-highlights">
-                                        <li>Autonomous AI agent generating complete blog posts from a single topic</li>
-                                        <li>Multi-step agentic workflow for planning, research, writing, and SEO</li>
-                                        <li>Scalable backend API with secure Firebase authentication</li>
-                                    </ul>
-                                    <div class="project-tech">
-                                        Python · FastAPI · Firebase · Google Cloud Run · LLM
-                                    </div>
-                                    <div class="project-buttons">
-                                        <a href="https://bolgzenai.web.app/" class="btn webapp-btn" target="_blank"
-                                            rel="noopener noreferrer">Website</a>
-                                        <a href="https://github.com/sandeepjanapati/blogzenai" class="btn github-btn"
-                                            target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <div class="swiper-slide">
+                                    <div class="project-content">
+                                        <div class="project-header">
+                                            <h3><a href="https://github.com/sandeepjanapati/feature-extraction-from-images"
+                                                    target="_blank" rel="noopener noreferrer">Feature Extraction from
+                                                    Images</a></h3>
+                                            <span class="project-type">Competition</span>
+                                        </div>
+                                        <ul class="project-highlights">
+                                            <li>Extracted entity values from images using OCR and ML techniques</li>
+                                            <li>Applied feature engineering to enhance text recognition accuracy</li>
+                                            <li>Built classification models for precise entity value extraction</li>
+                                        </ul>
+                                        <div class="project-tech">
+                                            Python · OpenCV · EasyOCR · PyTesseract · Pandas
+                                        </div>
+                                        <div class="project-buttons">
+                                            <a href="https://github.com/sandeepjanapati/feature-extraction-from-images"
+                                                class="btn github-btn" target="_blank"
+                                                rel="noopener noreferrer">GitHub</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="swiper-slide">
+                                    <div class="project-content">
+                                        <div class="project-header">
+                                            <h3><a href="https://bolgzenai.web.app/" target="_blank"
+                                                    rel="noopener noreferrer">BlogZenAi</a></h3>
+                                            <span class="project-type">Personal Project</span>
+                                        </div>
+                                        <ul class="project-highlights">
+                                            <li>Autonomous AI agent generating complete blog posts from a single topic
+                                            </li>
+                                            <li>Multi-step agentic workflow for planning, research, writing, and SEO
+                                            </li>
+                                            <li>Scalable backend API with secure Firebase authentication</li>
+                                        </ul>
+                                        <div class="project-tech">
+                                            Python · FastAPI · Firebase · Google Cloud Run · LLM
+                                        </div>
+                                        <div class="project-buttons">
+                                            <a href="https://bolgzenai.web.app/" class="btn webapp-btn" target="_blank"
+                                                rel="noopener noreferrer">Website</a>
+                                            <a href="https://github.com/sandeepjanapati/blogzenai"
+                                                class="btn github-btn" target="_blank"
+                                                rel="noopener noreferrer">GitHub</a>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div class="swiper-slide">
-                                <div class="project-content">
-                                    <div class="project-header">
-                                        <h3><a href="https://ask-yt.web.app/" target="_blank"
-                                                rel="noopener noreferrer">AskTheYoutube</a></h3>
-                                        <span class="project-type">Personal Project</span>
-                                    </div>
-                                    <ul class="project-highlights">
-                                        <li>End-to-end RAG pipeline to query YouTube videos in seconds</li>
-                                        <li>Sliding window chunking with Pinecone for sub-second query execution</li>
-                                        <li>Containerized backend on Docker and Google Cloud Run</li>
-                                    </ul>
-                                    <div class="project-tech">
-                                        Python · RAG · Pinecone · Docker · Firebase
-                                    </div>
-                                    <div class="project-buttons">
-                                        <a href="https://ask-yt.web.app/" class="btn webapp-btn" target="_blank"
-                                            rel="noopener noreferrer">Website</a>
-                                        <a href="https://github.com/sandeepjanapati/AskTheYouTube"
-                                            class="btn github-btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                <div class="swiper-slide">
+                                    <div class="project-content">
+                                        <div class="project-header">
+                                            <h3><a href="https://ask-yt.web.app/" target="_blank"
+                                                    rel="noopener noreferrer">AskTheYoutube</a></h3>
+                                            <span class="project-type">Personal Project</span>
+                                        </div>
+                                        <ul class="project-highlights">
+                                            <li>End-to-end RAG pipeline to query YouTube videos in seconds</li>
+                                            <li>Sliding window chunking with Pinecone for sub-second query execution
+                                            </li>
+                                            <li>Containerized backend on Docker and Google Cloud Run</li>
+                                        </ul>
+                                        <div class="project-tech">
+                                            Python · RAG · Pinecone · Docker · Firebase
+                                        </div>
+                                        <div class="project-buttons">
+                                            <a href="https://ask-yt.web.app/" class="btn webapp-btn" target="_blank"
+                                                rel="noopener noreferrer">Website</a>
+                                            <a href="https://github.com/sandeepjanapati/AskTheYouTube"
+                                                class="btn github-btn" target="_blank"
+                                                rel="noopener noreferrer">GitHub</a>
+                                        </div>
                                     </div>
                                 </div>
+
+
                             </div>
-
-
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
                         </div>
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
                     </div>
                 </div>
             </section>
@@ -545,25 +576,26 @@
                         <p>Hyderabad, Telangana, India</p>
                         <div class="socials">
                             <div class="social-item">
-                                <img src="assets/img/phone.png" alt="phone" class="social-icon">
+                                <img src="assets/img/phone.png" alt="phone" class="social-icon" loading="lazy">
                                 <a href="tel:+916302698521">+91 6302698521</a>
                             </div>
                             <div class="social-item">
-                                <img src="assets/img/email.jpeg" alt="Email" class="social-icon">
+                                <img src="assets/img/email.jpeg" alt="Email" class="social-icon" loading="lazy">
                                 <a href="mailto:janapati.sandeep.yadav@gmail.com"
                                     target="_blank">janapati.sandeep.yadav@gmail.com</a>
                             </div>
                             <div class="social-item">
                                 <a href="https://www.linkedin.com/in/janapatisandeep" target="_blank"
                                     rel="noopener noreferrer">
-                                    <img src="assets/img/linkedin.jpg" alt="LinkedIn" class="social-icon">
+                                    <img src="assets/img/linkedin.jpg" alt="LinkedIn" class="social-icon"
+                                        loading="lazy">
                                 </a>
                                 <a href="https://www.linkedin.com/in/janapatisandeep" target="_blank"
                                     rel="noopener noreferrer">linkedin.com/in/janapatisandeep</a>
                             </div>
                             <div class="social-item">
                                 <a href="https://github.com/sandeepjanapati" target="_blank" rel="noopener noreferrer">
-                                    <img src="assets/img/github.png" alt="GitHub" class="social-icon">
+                                    <img src="assets/img/github.png" alt="GitHub" class="social-icon" loading="lazy">
                                 </a>
                                 <a href="https://github.com/sandeepjanapati" target="_blank"
                                     rel="noopener noreferrer">github.com/sandeepjanapati</a>
@@ -571,7 +603,7 @@
                             <div class="social-item">
                                 <a href="https://www.kaggle.com/janapatisandeep" target="_blank"
                                     rel="noopener noreferrer">
-                                    <img src="assets/img/kaggle.jpg" alt="Kaggle" class="social-icon">
+                                    <img src="assets/img/kaggle.jpg" alt="Kaggle" class="social-icon" loading="lazy">
                                 </a>
                                 <a href="https://www.kaggle.com/janapatisandeep" target="_blank"
                                     rel="noopener noreferrer">kaggle.com/janapatisandeep</a>
@@ -581,12 +613,12 @@
                 </div>
 
             </section>
-        </div>
+        </main>
     </div>
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="assets/js/scripts.js"></script>
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
 </body>
 
 </html>

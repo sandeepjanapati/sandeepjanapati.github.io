@@ -3,16 +3,18 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
-    color: #fff;
-    background-color: #121212;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: rgba(255, 255, 255, 0.92);
+    background: #121212;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    scroll-behavior: smooth;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -26,17 +28,25 @@ body {
     width: 70%;
     height: 380px;
     background: #222;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
     padding: 40px;
     text-align: left;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-        box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+        opacity 0.5s ease,
+        background 0.3s ease;
     cursor: grab;
     overflow: hidden;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    opacity: 0.5;
+    transform: scale(0.9);
 }
 
 .project-content {
@@ -105,15 +115,9 @@ body {
 
 .swiper-slide:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-}
-
-.swiper-slide h3 {
-    font-size: 1.5em;
-    margin-bottom: 8px;
-    word-wrap: break-word;
-    word-break: break-word;
-    overflow-wrap: break-word;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    background: #292929;
 }
 
 .swiper-slide h3 a {
@@ -133,23 +137,11 @@ body {
     overflow-wrap: break-word;
 }
 
-.project-title {
-    font-size: 1.6em;
-    font-weight: 600;
-    color: #e0e0e0;
-    margin-bottom: 15px;
-}
-
-.project-description {
-    font-size: 1em;
-    color: #b0b0b0;
-}
-
 .swiper-pagination-bullet {
     background: rgba(255, 255, 255, 0.5);
     width: 10px;
     height: 10px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .swiper-pagination-bullet-active {
@@ -161,8 +153,11 @@ body {
 .swiper-button-prev {
     width: 44px;
     height: 44px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +166,7 @@ body {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.18);
     transform: scale(1.05);
 }
 
@@ -212,15 +207,18 @@ img {
     right: 20px;
     width: 50px;
     height: 50px;
-    background: #1e90ff;
+    background: rgba(30, 144, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     color: white;
     font-size: 24px;
-    border: none;
-    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 16px rgba(30, 144, 255, 0.3);
 }
 
 .back-to-top.show {
@@ -232,18 +230,19 @@ img {
 
 .sidebar {
     width: 20vw;
-    background: #000;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
     padding: 0 0;
     position: fixed;
     height: 100vh;
     overflow-y: hidden;
-    /* Remove scroll unless absolutely necessary */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     z-index: 100;
     box-sizing: border-box;
-    /* Use flex to distribute space naturally but gracefully */
 }
 
 /* Profile Section: Top Anchored, Flexible but Compact */
@@ -252,7 +251,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: clamp(12px, 2.8vh, 28px) 0 clamp(12px, 2.3vh, 22px) 0;
     margin-bottom: clamp(20px, 4.5vh, 40px);
 }
@@ -269,6 +268,7 @@ img {
 /* Navigation Menu: Fills Remaining Space, Centered Content */
 .sidebar .nav-menu {
     flex: 1;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 15px;
@@ -279,21 +279,27 @@ img {
     display: flex;
     align-items: center;
     padding: clamp(8px, 1.7vh, 16px) 1.5rem;
-    color: #fff;
-    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     font-size: clamp(14px, 2.3vh, 18px);
+    font-weight: 500;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 12px;
     margin: clamp(1px, 0.2vh, 4px) 0;
     white-space: nowrap;
+    position: relative;
 }
 
 .sidebar .nav-link:hover,
 .sidebar .nav-link.active {
-    background: #1e90ff;
+    background: rgba(30, 144, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: #fff;
     transform: translateX(5px);
-    box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
+    border: 1px solid rgba(30, 144, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(30, 144, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .sidebar .nav-link svg {
@@ -313,12 +319,10 @@ section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    border-bottom: 1px solid #444;
-    background-color: #1a1a1a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
     overflow: hidden;
-
     box-sizing: border-box;
-
 }
 
 section.visible {
@@ -330,12 +334,14 @@ section h3 {
     font-size: 2.5rem;
     margin-top: 0;
     margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;
 }
 
 section h2 {
     font-size: 2.5rem;
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
 }
 
 .about-content,
@@ -366,7 +372,6 @@ section h2 {
     align-items: flex-start;
     flex-direction: column;
     text-align: left;
-    height: 100vh;
     overflow: hidden;
     position: relative;
 }
@@ -397,6 +402,8 @@ h1 {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     white-space: normal;
+    line-height: 1.7;
+    letter-spacing: 0.2px;
 }
 
 .social-icons {
@@ -415,19 +422,24 @@ h1 {
 .buttons .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    border: 2px solid white;
-    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     color: white;
     text-decoration: none;
-    border-radius: 10px;
-    transition: background 0.3s, color 0.3s, transform 0.2s;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     font-weight: 500;
+    text-align: center;
 }
 
 .buttons .btn:hover {
-    background: white;
-    color: #121212;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .github-btn,
@@ -435,99 +447,64 @@ h1 {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     margin: 0.5rem;
-    border: 2px solid white;
-    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     color: white;
     text-decoration: none;
-    border-radius: 10px;
-    transition: background 0.3s, color 0.3s;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     pointer-events: auto;
+    text-align: center;
 }
 
 .github-btn:hover,
 .webapp-btn:hover {
-    background: white;
-    color: black;
-    border-color: white;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.project-card {
-    padding: 1rem;
-    background: #222;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.project-card:hover {
-    background: #1e90ff;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 #contact {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
-}
-
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: center;
-}
-
-input,
-textarea,
-button {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-}
-
-textarea {
-    resize: none;
-}
-
-button {
-    background: #1e90ff;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #1a7ac8;
-}
-
-footer {
-    padding: 1rem;
-    background: #000;
-    text-align: center;
 }
 
 .socials {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     gap: 1rem;
     margin-top: 1rem;
-    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 }
-
 
 .social-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    transition: transform 0.3s ease;
+    width: auto;
+}
+
+.social-item a {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.social-item:hover {
+    transform: translateX(10px);
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .social-icon {
@@ -535,22 +512,22 @@ footer {
     height: 32px;
     border-radius: 50%;
     border: 2px solid #fff;
-    transition: transform 0.3s;
+    transition: transform 0.2s ease;
 }
 
 .social-item a {
-    color: white;
-    text-decoration: none;
     font-size: 1rem;
+    color: #ccc;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
 }
 
-.social-item a:hover {
-    text-decoration: underline;
+.social-item:hover a {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-.social-icon:hover {
-    transform: scale(1.1);
-}
 
 .intro-text {
     font-size: 1.5rem;
@@ -560,13 +537,16 @@ footer {
 
 .blue-text {
     color: #1e90ff;
+    letter-spacing: 0.5px;
 }
 
-.about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding-top: 0;
+.white-text {
+    color: #fff;
+}
+
+.date {
+    color: #888;
+    font-style: italic;
 }
 
 .about-me h3,
@@ -577,7 +557,14 @@ footer {
 }
 
 .about-me,
-.interests {
+.interests,
+.education,
+.online-certifications,
+.skills,
+.projects,
+.experience,
+.achievements,
+.contact {
     padding: 1rem;
     color: white;
 }
@@ -591,19 +578,23 @@ footer {
 .interests .interest-item {
     display: flex;
     align-items: center;
-
     padding: 1rem;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
     margin: 0.5rem;
+    min-height: 60px;
 }
 
 .interests .interest-image {
     width: 50px;
     height: 50px;
     margin-right: 1rem;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
 }
 
 .interests .interest-item span {
@@ -611,52 +602,19 @@ footer {
     font-size: 1.2rem;
 }
 
-.interests ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.interests li {
-    margin-bottom: 0.5rem;
-}
-
-.interest-images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.interest-image {
-    width: 100px;
-    height: 100px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.about-me,
-.interests,
-.education,
-.online-certifications,
-.skills,
-.experience,
-.projects,
-.achievements,
-.contact {
-    padding: 1rem;
-    color: white;
-}
-
 .education-box {
-    padding: 1rem;
-    border-radius: 10px;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
     margin-bottom: 1rem;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #ddd;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .education-details p,
@@ -683,11 +641,11 @@ footer {
 .iitbhu-logo {
     width: 240px;
     height: auto;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
     padding: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .experience {
@@ -698,10 +656,14 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 20px;
     margin-bottom: 40px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .experience-details {
@@ -711,6 +673,7 @@ footer {
 
 .experience-details p {
     margin: 0.1rem 0;
+    line-height: 1.6;
 }
 
 .experience-details ul {
@@ -732,6 +695,15 @@ footer {
     height: auto;
     margin-right: 40px;
     margin-left: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.experience-tech {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 0.75rem;
+    letter-spacing: 0.3px;
 }
 
 .online-certifications .certification-box {
@@ -743,27 +715,34 @@ footer {
 .online-certifications .certification-item {
     display: flex;
     align-items: center;
-    background: #333;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 16px;
     margin: 0.5rem;
     text-decoration: none;
     color: white;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    min-height: 70px;
 }
 
 .online-certifications .certification-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .online-certifications .certification-image {
     width: 50px;
     height: 50px;
     margin-right: 1rem;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
 }
 
 .online-certifications .certification-item span {
@@ -786,11 +765,24 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    border-radius: 10px;
-    width: 120px;
-    height: 120px;
+    padding: 0.75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    width: 100px;
+    height: 100px;
     justify-content: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.skill-box:hover {
+    transform: scale(1.08);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .skill-image {
@@ -806,76 +798,35 @@ footer {
     max-height: 100%;
 }
 
-.projects {
-    margin: 20px 0;
-}
-
-.projects-box {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 10px;
-}
-
-.projects-details {
-    margin: 0.2rem 0;
-    flex: 1;
-}
-
-.projects-details h3 a {
-    text-decoration: none;
-    color: #1e90ff;
-    font-size: 0.8em;
-}
-
-.projects-details p {
-    margin: 0.1rem 0;
-}
-
-
-
-.projects-details ul {
-    margin: 0.1rem 0;
-    padding-left: 20px;
-}
-
-.projects-details li {
-    margin: 0.1rem 0;
-}
-
-
-.projects-logo {
-    margin-left: 20px;
-}
-
-.project-logo {
-    width: 100px;
-    height: auto;
-}
-
-
 .project-buttons {
-    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
 }
 
 .project-buttons .btn {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
-    margin: 0.5rem;
-    border: 2px solid white;
-    background: transparent;
+    margin: 0;
+    padding: 0.6rem 1.25rem;
+    min-width: 110px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     color: white;
     text-decoration: none;
-    border-radius: 10px;
-    transition: background 0.3s, color 0.3s;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: center;
+    font-size: 0.9rem;
 }
 
 .project-buttons .btn:hover {
-    background: white;
-    color: black;
-    border-color: white;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 #achievements ul {
@@ -928,45 +879,6 @@ footer {
     opacity: 0.8;
 }
 
-.socials {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.social-item {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    font-size: 1.25rem;
-    padding: 0;
-    border: none;
-    background: transparent;
-    transition: transform 0.3s ease;
-    width: auto;
-}
-
-.social-item:hover {
-    transform: translateX(10px);
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-.social-item a {
-    color: #ccc;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease;
-}
-
-.social-item:hover a {
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
 .contact .social-icon {
     width: 35px;
     height: 35px;
@@ -980,6 +892,10 @@ footer {
 
 .social-item:hover .social-icon {
     transform: scale(1.1);
+}
+
+.education-details p {
+    line-height: 1.6;
 }
 
 .image-wrapper {
@@ -1000,17 +916,6 @@ footer {
     background: rgba(255, 255, 255, 0);
     z-index: 1;
     pointer-events: none;
-}
-
-
-.align-left {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.align-left .social-icon {
-    margin-right: 10px;
 }
 
 
@@ -1085,15 +990,6 @@ footer {
 
     .contact-name {
         font-size: 3.25rem;
-        margin-bottom: 0.1rem;
-        font-weight: 600;
-        letter-spacing: -0.05em;
-        line-height: 0.85;
-        color: #fff;
-        background: none;
-        -webkit-text-fill-color: initial;
-        display: block;
-        word-break: break-word;
     }
 
     .swiper {
@@ -1150,14 +1046,8 @@ footer {
     }
 
     .skill-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        border-radius: 10px;
         width: 100px;
         height: 100px;
-        justify-content: center;
     }
 
 
@@ -1168,12 +1058,15 @@ footer {
         left: 0;
         width: 100%;
         height: 60px;
-        background-color: #000;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
         display: flex;
         align-items: center;
         padding: 0 1rem;
         z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     }
 
     .hamburger-menu {
@@ -1202,10 +1095,12 @@ footer {
         left: -100%;
         width: 250px;
         height: 100%;
-        background: #000;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(40px) saturate(180%);
+        -webkit-backdrop-filter: blur(40px) saturate(180%);
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
         transition: left 0.3s ease;
-
         color: white;
         z-index: 999;
         overflow-y: auto;
@@ -1231,13 +1126,6 @@ footer {
         font-size: 2rem;
     }
 
-    .projects-details h3 {
-        text-decoration: none;
-        color: #1e90ff;
-        font-size: 2.25em;
-        line-height: 1;
-    }
-
     h2,
     h3 {
         font-size: 1.5rem;
@@ -1256,26 +1144,6 @@ footer {
         font-size: 0.9rem;
     }
 
-    .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-
-    form {
-        max-width: 100%;
-        padding: 1rem;
-    }
-
-    input,
-    textarea,
-    button {
-        font-size: 0.9rem;
-    }
-
-    footer {
-        padding: 1rem;
-    }
-
-
     .interests .interest-box {
         grid-template-columns: 1fr;
     }
@@ -1293,13 +1161,13 @@ footer {
     }
 
     .education-box {
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: flex-start;
     }
 
     .education-logo {
         margin-left: 0;
-        margin-top: 1rem;
+        margin-bottom: 1rem;
         align-self: center;
     }
 
@@ -1308,13 +1176,13 @@ footer {
     }
 
     .experience-box {
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: flex-start;
     }
 
     .experience-logo {
         margin-left: 0;
-        margin-top: 1rem;
+        margin-bottom: 1rem;
         align-self: center;
     }
 
@@ -1351,50 +1219,15 @@ footer {
     transition-delay: 0.4s;
 }
 
-.swiper-slide {
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    opacity: 0.5;
-    transform: scale(0.9);
-}
-
 .swiper-slide-active {
     opacity: 1;
     transform: scale(1);
 }
 
-a,
-button,
-.btn,
-.nav-link,
-.skill-box,
-.education-box,
-.experience-box,
-.certification-item {
-    transition: all 0.3s ease;
-}
-
 .education-box:hover,
 .experience-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-.skill-box {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.skill-box:hover {
-    transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.swiper-slide:hover {
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-}
-
-.certification-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: none;
+    box-shadow: none;
 }
 
 .sidebar .profile .profile-image:hover {
@@ -1407,78 +1240,9 @@ button,
 
 .back-to-top:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.buttons .btn,
-.github-btn,
-.webapp-btn {
-    text-align: center;
-}
-
-.project-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.25rem;
-}
-
-.project-buttons .btn {
-    margin: 0;
-    padding: 0.6rem 1.25rem;
-    min-width: 110px;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-.interest-item {
-    min-height: 60px;
-}
-
-.certification-item {
-    min-height: 70px;
-}
-
-.sidebar .nav-link {
-    position: relative;
-}
-
-section h2 {
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.5px;
-}
-
-section h3 {
-    letter-spacing: 0.3px;
-}
-
-.education-details p,
-.experience-details p {
-    line-height: 1.6;
-}
-
-
-
-
-.social-icon {
-    transition: transform 0.2s ease;
-}
-
-.blue-text {
-    letter-spacing: 0.5px;
-}
-
-.description {
-    line-height: 1.7;
-    letter-spacing: 0.2px;
-}
-
-.swiper-pagination-bullet {
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.back-to-top {
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    background: rgba(30, 144, 255, 0.85);
+    box-shadow: 0 8px 24px rgba(30, 144, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .stagger-item {
@@ -1524,7 +1288,6 @@ section h3 {
 
     section {
         width: 100vw;
-        padding: 4vw 4vw;
         padding-top: 50px;
         margin-left: 0rem;
         margin-right: 0;
@@ -1545,12 +1308,8 @@ section h3 {
 
     .contact p:not(.contact-name) {
         font-size: 0.75rem;
-        color: #888;
-        margin-bottom: rem;
-        font-weight: 600;
-        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
         margin-left: 0px;
-        opacity: 0.8;
     }
 
     .skill-box {
@@ -1577,6 +1336,7 @@ section h3 {
     }
 
     .swiper-slide {
+        width: 85%;
         padding: 15px;
     }
 
@@ -1629,4 +1389,120 @@ section h3 {
     .swiper-button-prev::after {
         font-size: 0px;
     }
+
+    .social-item a {
+        font-size: 0.8rem;
+        margin-left: 0px;
+        color: #ccc;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+    }
+
+    .contact .social-icon {
+        width: 30px;
+        height: 30px;
+        margin-left: 0px;
+    }
+
+}
+
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.06);
+    border-top-color: rgba(30, 144, 255, 0.8);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    box-shadow: 0 0 20px rgba(30, 144, 255, 0.15);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+.toast-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(30, 144, 255, 0.95);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+    white-space: nowrap;
+}
+
+.toast-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.toast-exit {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+}
+
+.toast-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.toast-message {
+    line-height: 1.3;
 }

@@ -1,8 +1,82 @@
+// ============================================================
+// PORTFOLIO WEBSITE - MAIN JAVASCRIPT
+// ============================================================
+
 document.addEventListener('DOMContentLoaded', function () {
+
+    // --------------------------------------------------------
+    // 1. PRELOADER
+    // --------------------------------------------------------
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Minimum display time for preloader
+        const minDisplayTime = 800;
+        const startTime = performance.now();
+
+        function hidePreloader() {
+            const elapsed = performance.now() - startTime;
+            const remaining = Math.max(0, minDisplayTime - elapsed);
+
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                preloader.addEventListener('transitionend', () => {
+                    preloader.style.display = 'none';
+                    document.body.classList.remove('loading');
+                }, { once: true });
+            }, remaining);
+        }
+
+        // Hide once everything is loaded
+        if (document.readyState === 'complete') {
+            hidePreloader();
+        } else {
+            window.addEventListener('load', hidePreloader);
+        }
+    }
+
+    // --------------------------------------------------------
+    // 2. CORE DOM REFERENCES
+    // --------------------------------------------------------
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
     const typedText = document.getElementById('typed-text');
-    const cursor = document.querySelector('.cursor');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const sidebar = document.getElementById('sidebar');
+    const backToTopBtn = document.getElementById('back-to-top');
+
+    // --------------------------------------------------------
+    // 3. DYNAMIC TIME-BASED GREETING
+    // --------------------------------------------------------
+    const introText = document.querySelector('.intro-text');
+    if (introText) {
+        const hour = new Date().getHours();
+        let greeting = '';
+
+        if (hour >= 5 && hour < 12) {
+            greeting = 'Good Morning, I\'m';
+        } else if (hour >= 12 && hour < 17) {
+            greeting = 'Good Afternoon, I\'m';
+        } else if (hour >= 17 && hour < 21) {
+            greeting = 'Good Evening, I\'m';
+        } else {
+            greeting = 'Hey there, I\'m';
+        }
+
+        introText.textContent = greeting;
+
+        // Add a subtle entrance animation
+        introText.style.opacity = '0';
+        introText.style.transform = 'translateY(-10px)';
+        requestAnimationFrame(() => {
+            introText.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            introText.style.opacity = '1';
+            introText.style.transform = 'translateY(0)';
+        });
+    }
+
+    // --------------------------------------------------------
+    // 4. TYPING EFFECT
+    // --------------------------------------------------------
     const words = ['Data Scientist ', 'Coder ', 'Fast Learner ', 'Creative Thinker ', 'ML Engineer '];
     let wordIndex = 0;
     let letterIndex = 0;
@@ -34,16 +108,273 @@ document.addEventListener('DOMContentLoaded', function () {
 
     type();
 
+    // --------------------------------------------------------
+    // 5. TOUCH DEVICE DETECTION
+    // --------------------------------------------------------
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // --------------------------------------------------------
+    // 7. MAGNETIC BUTTON EFFECT
+    // --------------------------------------------------------
+    const magneticButtons = document.querySelectorAll(
+        '.btn, .github-btn, .webapp-btn, .back-to-top, .certification-item, .education-logo, .company-logo'
+    );
+
+    function initMagneticButtons() {
+        if (isTouchDevice) return; // Skip on touch devices
+
+        magneticButtons.forEach(btn => {
+            const strength = 25; // Magnetic pull strength in pixels
+            const triggerArea = 1.5; // Multiplier for trigger zone
+
+            btn.addEventListener('mousemove', function (e) {
+                const rect = this.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const distX = e.clientX - centerX;
+                const distY = e.clientY - centerY;
+
+                // Calculate distance from center
+                const distance = Math.sqrt(distX * distX + distY * distY);
+                const maxDist = Math.max(rect.width, rect.height) * triggerArea;
+
+                if (distance < maxDist) {
+                    const pullX = (distX / maxDist) * strength;
+                    const pullY = (distY / maxDist) * strength;
+                    this.style.transform = `translate(${pullX}px, ${pullY}px)`;
+                    this.style.transition = 'transform 0.2s ease-out';
+                }
+            });
+
+            btn.addEventListener('mouseleave', function () {
+                this.style.transform = '';
+                this.style.transition = 'transform 0.4s ease-out';
+
+                // Reset after transition
+                setTimeout(() => {
+                    this.style.transition = '';
+                }, 400);
+            });
+        });
+    }
+
+    initMagneticButtons();
+
+    // --------------------------------------------------------
+    // 8. SCROLL-TRIGGERED SKILL ANIMATIONS
+    // --------------------------------------------------------
+    const skillBoxes = document.querySelectorAll('.skill-box');
+    let skillsAnimated = false;
+
+    function animateSkillBoxes() {
+        if (skillsAnimated) return;
+
+        const skillsSection = document.getElementById('skills');
+        if (!skillsSection) return;
+
+        const rect = skillsSection.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+
+        if (isVisible) {
+            skillsAnimated = true;
+
+            skillBoxes.forEach((box, index) => {
+                // Set initial state
+                box.style.opacity = '0';
+                box.style.transform = 'scale(0.3) translateY(30px)';
+
+                // Staggered bounce-in animation
+                setTimeout(() => {
+                    box.style.transition = 'opacity 0.5s ease, transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    box.style.opacity = '1';
+                    box.style.transform = 'scale(1) translateY(0)';
+                }, index * 60);
+            });
+        }
+    }
+
+    // Set initial state for skill boxes
+    skillBoxes.forEach(box => {
+        box.style.opacity = '0';
+        box.style.transform = 'scale(0.3) translateY(30px)';
+    });
+
+    // --------------------------------------------------------
+    // 9. CONTACT COPY-TO-CLIPBOARD
+    // --------------------------------------------------------
+    const toastContainer = createToastContainer();
+
+    function createToastContainer() {
+        const container = document.createElement('div');
+        container.className = 'toast-container';
+        container.setAttribute('aria-live', 'polite');
+        document.body.appendChild(container);
+        return container;
+    }
+
+    function showToast(message, duration = 2500) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `
+            <span class="toast-icon">✓</span>
+            <span class="toast-message">${message}</span>
+        `;
+
+        toastContainer.appendChild(toast);
+
+        // Trigger entrance animation
+        requestAnimationFrame(() => {
+            toast.classList.add('toast-visible');
+        });
+
+        // Auto-remove
+        setTimeout(() => {
+            toast.classList.remove('toast-visible');
+            toast.classList.add('toast-exit');
+            toast.addEventListener('transitionend', () => {
+                toast.remove();
+            }, { once: true });
+        }, duration);
+    }
+
+    function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        }
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            return Promise.resolve();
+        } catch (err) {
+            document.body.removeChild(textarea);
+            return Promise.reject(err);
+        }
+    }
+
+    // Make contact items copyable
+    function initCopyableContacts() {
+        const contactSection = document.getElementById('contact');
+        if (!contactSection) return;
+
+        const socialItems = contactSection.querySelectorAll('.social-item');
+
+        socialItems.forEach(item => {
+            const link = item.querySelector('a[href^="tel:"], a[href^="mailto:"]');
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            let copyText = '';
+            let label = '';
+
+            if (href.startsWith('tel:')) {
+                copyText = href.replace('tel:', '');
+                label = 'Phone number';
+            } else if (href.startsWith('mailto:')) {
+                copyText = href.replace('mailto:', '');
+                label = 'Email address';
+            }
+
+            if (copyText) {
+                // Add copy indicator
+                item.style.cursor = 'pointer';
+                item.setAttribute('title', `Click to copy ${label}`);
+
+                // Add copy icon
+                const copyIcon = document.createElement('span');
+                copyIcon.className = 'copy-icon';
+                copyIcon.innerHTML = '📋';
+                copyIcon.style.opacity = '0';
+                copyIcon.style.transition = 'opacity 0.3s ease';
+                copyIcon.style.marginLeft = '8px';
+                copyIcon.style.fontSize = '0.85rem';
+                item.appendChild(copyIcon);
+
+                // Show icon on hover
+                item.addEventListener('mouseenter', () => {
+                    copyIcon.style.opacity = '1';
+                });
+                item.addEventListener('mouseleave', () => {
+                    copyIcon.style.opacity = '0';
+                });
+
+                // Copy on click
+                item.addEventListener('click', (e) => {
+                    // Don't prevent link default if they click directly on the link
+                    if (e.target.closest('a')) {
+                        e.preventDefault();
+                    }
+
+                    copyToClipboard(copyText)
+                        .then(() => {
+                            showToast(`${label} copied to clipboard!`);
+                            // Brief visual feedback
+                            copyIcon.innerHTML = '✅';
+                            setTimeout(() => {
+                                copyIcon.innerHTML = '📋';
+                            }, 1500);
+                        })
+                        .catch(() => {
+                            showToast('Failed to copy. Please try manually.');
+                        });
+                });
+            }
+        });
+    }
+
+    initCopyableContacts();
+
+    // --------------------------------------------------------
+    // 11. NAVIGATION & SCROLL HANDLING
+    // --------------------------------------------------------
+
+    // Initial visibility check for sections already in view on load
+    sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - window.innerHeight / 1.3) {
+            section.classList.add('visible');
+        }
+    });
+
+    // Prevent right-click on images
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+    });
+
+    // Hamburger menu toggle
+    hamburgerMenu.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar on outside click
+    document.addEventListener('click', (e) => {
+        const isClickInsideSidebar = sidebar.contains(e.target);
+        const isClickOnHamburger = hamburgerMenu.contains(e.target);
+
+        if (!isClickInsideSidebar && !isClickOnHamburger) {
+            sidebar.classList.remove('active');
+        }
+    });
+
+    // Combined scroll handler
     window.addEventListener('scroll', function () {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
-            if (pageYOffset >= sectionTop - window.innerHeight / 2 && pageYOffset < sectionTop + sectionHeight - window.innerHeight / 2) {
+            if (window.scrollY >= sectionTop - window.innerHeight / 2 && window.scrollY < sectionTop + sectionHeight - window.innerHeight / 2) {
                 current = section.getAttribute('id');
             }
 
-            if (pageYOffset >= sectionTop - window.innerHeight / 1.3) {
+            if (window.scrollY >= sectionTop - window.innerHeight / 1.3) {
                 section.classList.add('visible');
             }
         });
@@ -54,54 +385,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.classList.add('active');
             }
         });
-    });
 
-    sections.forEach(section => {
-        if (window.pageYOffset >= section.offsetTop - window.innerHeight / 1.3) {
-            section.classList.add('visible');
-        }
-    });
-
-    document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-        });
-    });
-
-
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const sidebar = document.getElementById('sidebar');
-
-    hamburgerMenu.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-    });
-
-
-    document.addEventListener('click', (e) => {
-        const isClickInsideSidebar = sidebar.contains(e.target);
-        const isClickOnHamburger = hamburgerMenu.contains(e.target);
-
-        if (!isClickInsideSidebar && !isClickOnHamburger) {
-            sidebar.classList.remove('active');
-        }
-    });
-
-
-
-    const backToTopBtn = document.getElementById('back-to-top');
-
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
+        if (window.scrollY > 300) {
             backToTopBtn.classList.add('show');
         } else {
             backToTopBtn.classList.remove('show');
         }
+
+        // Trigger skill animations on scroll
+        animateSkillBoxes();
     });
 
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    // --------------------------------------------------------
+    // 12. SWIPER INITIALIZATION
+    // --------------------------------------------------------
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: "auto",
         spaceBetween: 30,
@@ -133,23 +434,25 @@ document.addEventListener('DOMContentLoaded', function () {
             pauseOnMouseEnter: true,
         },
         on: {
-            touchEnd: function (swiper) {
-                let threshold = swiper.width * 0.2;
-                let diff = swiper.touches.startX - swiper.touches.currentX;
+            touchEnd: function () {
+                let threshold = this.width * 0.2;
+                let diff = this.touches.startX - this.touches.currentX;
                 if (Math.abs(diff) > threshold) {
                     if (diff > 0) {
-                        swiper.slideNext();
+                        this.slideNext();
                     } else {
-                        swiper.slidePrev();
+                        this.slidePrev();
                     }
                 } else {
-                    swiper.slideTo(swiper.activeIndex);
+                    this.slideTo(this.activeIndex);
                 }
             }
         }
     });
 
-
+    // --------------------------------------------------------
+    // 13. SMOOTH SCROLL FOR BUTTONS
+    // --------------------------------------------------------
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -162,6 +465,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // --------------------------------------------------------
+    // 14. STAGGER ANIMATIONS
+    // --------------------------------------------------------
     const staggerSelectors = [
         '.skill-box',
         '.certification-item',
@@ -195,6 +501,9 @@ document.addEventListener('DOMContentLoaded', function () {
         staggerObserver.observe(section);
     });
 
+    // --------------------------------------------------------
+    // 15. COUNTER ANIMATION
+    // --------------------------------------------------------
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -226,9 +535,20 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('#achievements').forEach(section => {
         counterObserver.observe(section);
     });
-});
+
+    // --------------------------------------------------------
+    // 16. INITIAL SKILL ANIMATION CHECK
+    // --------------------------------------------------------
+    animateSkillBoxes();
+
+}); // End DOMContentLoaded
 
 
+// ============================================================
+// GLOBAL EVENT LISTENERS (Outside DOMContentLoaded)
+// ============================================================
+
+// Disable PrintScreen
 document.addEventListener('keyup', function (e) {
     if (e.key == 'PrintScreen') {
         navigator.clipboard.writeText('');
@@ -236,6 +556,7 @@ document.addEventListener('keyup', function (e) {
     }
 });
 
+// Disable Ctrl+P (Print)
 document.addEventListener('keydown', function (e) {
     if (e.ctrlKey && e.key == 'p') {
         alert('Printing is disabled on this website.');
@@ -244,6 +565,10 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
+
+// ============================================================
+// PARTICLES.JS INITIALIZATION
+// ============================================================
 if (typeof particlesJS !== 'undefined') {
     particlesJS('particles-js', {
         particles: {
