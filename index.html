@@ -25,26 +25,28 @@
     </script>
 </head>
 
-<body class="loading">
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader-spinner"></div>
-    </div>
+<body>
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+    <div class="menu-backdrop" aria-hidden="true"></div>
 
     <div class="container">
 
         <div class="header">
-            <div class="hamburger-menu" id="hamburger-menu">
+            <button class="hamburger-menu" id="hamburger-menu" type="button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
 
-        <nav class="sidebar" id="sidebar">
+        <nav class="sidebar" id="sidebar" aria-label="Main navigation">
             <div class="profile">
                 <div class="image-wrapper">
-                    <img src="assets/img/profile/profile.jpg" alt="Profile Image" class="profile-image" loading="lazy">
+                    <svg class="profile-progress" viewBox="0 0 100 100" aria-hidden="true">
+                        <circle class="profile-progress-track" cx="50" cy="50" r="48" />
+                        <circle class="profile-progress-value" cx="50" cy="50" r="48" pathLength="100" />
+                    </svg>
+                    <img src="assets/img/profile/profile.jpg" alt="Profile Image" class="profile-image" fetchpriority="high" width="116" height="116">
                     <div class="overlay"></div>
                 </div>
             </div>
@@ -70,12 +72,11 @@
         </nav>
         <main class="content">
             <section id="home" class="intro">
-                <div id="particles-js"></div>
                 <div class="home-content">
                     <p class="intro-text">Hi, I'm</p>
-                    <h1>Janapati Sandeep</h1>
-                    <p class="typing-effect"><span class="white-text">A </span><span id="typed-text"
-                            class="blue-text"></span><span class="cursor">|</span></p>
+                        <h1><span>Janapati</span> <span>Sandeep</span></h1>
+                        <p class="typing-effect"><span class="white-text" id="role-article">An </span><span id="typed-text"
+                            class="blue-text">AI Engineer</span><span class="cursor" aria-hidden="true">|</span></p>
                     <p class="description">Driven, proactive and detail oriented professional with a passion for
                         innovation in Data Science and Machine Learning.
                         Thrives on tackling complex challenges, solving real world problems and delivering impactful
@@ -117,21 +118,6 @@
                         <h2>Interests</h2>
                         <div class="interest-box">
                             <div class="interest-item">
-                                <img src="assets/img/interests/ds.png" alt="Data Science" class="interest-image"
-                                    loading="lazy">
-                                <span>Data Science</span>
-                            </div>
-                            <div class="interest-item">
-                                <img src="assets/img/interests/ml.png" alt="Machine Learning" class="interest-image"
-                                    loading="lazy">
-                                <span>Machine Learning</span>
-                            </div>
-                            <div class="interest-item">
-                                <img src="assets/img/interests/da.jpg" alt="Data Analytics" class="interest-image"
-                                    loading="lazy">
-                                <span>Data Analytics</span>
-                            </div>
-                            <div class="interest-item">
                                 <img src="assets/img/interests/AI.jpg" alt="Artificial Intelligence"
                                     class="interest-image" loading="lazy">
                                 <span>Artificial Intelligence</span>
@@ -145,6 +131,21 @@
                                 <img src="assets/img/interests/llm.jpg" alt="Large Language Models"
                                     class="interest-image" loading="lazy">
                                 <span>Large Language Models</span>
+                            </div>
+                            <div class="interest-item">
+                                <img src="assets/img/interests/ds.png" alt="Data Science" class="interest-image"
+                                    loading="lazy">
+                                <span>Data Science</span>
+                            </div>
+                            <div class="interest-item">
+                                <img src="assets/img/interests/ml.png" alt="Machine Learning" class="interest-image"
+                                    loading="lazy">
+                                <span>Machine Learning</span>
+                            </div>
+                            <div class="interest-item">
+                                <img src="assets/img/interests/da.jpg" alt="Data Analytics" class="interest-image"
+                                    loading="lazy">
+                                <span>Data Analytics</span>
                             </div>
                         </div>
                     </div>
@@ -531,9 +532,11 @@
 
 
                             </div>
-                            <div class="swiper-pagination"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                            <div class="carousel-controls">
+                                <button class="swiper-button-prev" type="button" aria-label="Previous project"></button>
+                                <div class="swiper-pagination"></div>
+                                <button class="swiper-button-next" type="button" aria-label="Next project"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -544,20 +547,20 @@
                     <div class="achievements">
                         <h2>Achievements</h2>
                         <ul>
-                            <li>Achieved a maximum contest rating of <span class="counter" data-target="1473">0</span>
+                            <li>Achieved a maximum contest rating of <span class="counter" data-target="1473">1473</span>
                                 on the LeetCode coding platform by
                                 consistently solving complex competitive programming challenges, demonstrating strong
                                 problem-solving skills and algorithmic expertise</li>
-                            <li>Achieved a rating of <span class="counter" data-target="1054">0</span> on Chess.com by
+                            <li>Achieved a rating of <span class="counter" data-target="1054">1054</span> on Chess.com by
                                 consistently demonstrating strategic thinking,
                                 tactical skills, and a deep understanding of chess gameplay through regular
                                 participation in matches and tournaments</li>
-                            <li>Secured <span class="counter" data-target="3" data-suffix="rd">0</span> place in First
+                            <li>Secured <span class="counter" data-target="3" data-suffix="rd">3rd</span> place in First
                                 Cut 2022, a short film competition organized by the Cine
                                 Club, IIT BHU, by directing a creative and impactful short film, showcasing storytelling
                                 and cinematic skills</li>
                             <li>Successfully participated in the Cyclothon event of SPARDHA'22, completing a remarkable
-                                record distance of <span class="counter" data-target="100">0</span> km, demonstrating
+                                record distance of <span class="counter" data-target="100">100</span> km, demonstrating
                                 endurance, determination, and athletic
                                 excellence</li>
                             <li>Organized "Fake Investors," an auction-based game where participants bid on startup
@@ -617,7 +620,6 @@
     </div>
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
 
