@@ -158,16 +158,32 @@
                         <h2>Education</h2>
                         <div class="education-box">
                             <div class="education-details">
+                                <p class="education-eyebrow">Undergraduate education</p>
                                 <h3><a href="https://iitbhu.ac.in/" target="_blank" rel="noopener noreferrer">IIT
                                         BHU</a></h3>
-                                <p>Indian Institute of Technology (BHU), Varanasi</p>
+                                <p class="education-institution">Indian Institute of Technology (BHU), Varanasi</p>
                                 <p class="date">Aug 2021 — May 2025</p>
-                                <p>Course: B.Tech</p>
-                                <p>Degree: Mining Engineering</p>
-                                <p>CGPA: 8.01/10</p>
-                                <p>Relevant Courseworks:</p>
-                                <p> -> Ground Vibration Prediction using Machine Learning</p>
-                                <p> -> Coal Quality Analysis using Machine Learning</p>
+                                <dl class="education-credentials">
+                                    <div>
+                                        <dt>Degree</dt>
+                                        <dd>Bachelor of Technology <span>(B.Tech)</span></dd>
+                                    </div>
+                                    <div>
+                                        <dt>Discipline</dt>
+                                        <dd>Mining Engineering</dd>
+                                    </div>
+                                    <div>
+                                        <dt>CGPA</dt>
+                                        <dd class="education-score">8.01 <span>/ 10</span></dd>
+                                    </div>
+                                </dl>
+                                <div class="education-coursework">
+                                    <h4>Relevant coursework</h4>
+                                    <ul>
+                                        <li>Ground Vibration Prediction using Machine Learning</li>
+                                        <li>Coal Quality Analysis using Machine Learning</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="education-logo">
                                 <a href="https://iitbhu.ac.in/" target="_blank" rel="noopener noreferrer">
@@ -225,6 +241,7 @@
             </section>
 
             <section id="skills">
+                <h2>Skills</h2>
                 <div class="skills-content">
                     <div class="skills-subsection">
                         <h3>Languages and Databases</h3>
@@ -572,20 +589,31 @@
             </section>
 
             <section id="contact">
+                <h2>Contact</h2>
+                <div class="contact-body">
                 <div class="contact-content">
                     <div class="contact">
-                        <h2>Contact</h2>
-                        <p class="contact-name">Janapati Sandeep</p>
-                        <p>Hyderabad, Telangana, India</p>
-                        <div class="socials">
+                        <div class="contact-identity">
+                            <p class="contact-name">Janapati Sandeep</p>
+                            <p class="contact-location">Hyderabad, Telangana, India</p>
+                        </div>
+                        <div class="contact-tabs" role="tablist" aria-label="Contact options" hidden>
+                            <button type="button" id="details-tab" role="tab" aria-selected="true" aria-controls="contact-details">Details</button>
+                            <button type="button" id="message-tab" role="tab" aria-selected="false" aria-controls="contact-message" tabindex="-1">Message</button>
+                        </div>
+                        <div class="contact-panels">
+                        <div class="socials" id="contact-details" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
                             <div class="social-item">
                                 <img src="assets/img/phone.png" alt="phone" class="social-icon" loading="lazy">
-                                <a href="tel:+916302698521">+91 6302698521</a>
+                                <div class="contact-detail">
+                                    <span class="contact-value"><a href="tel:+916302698521">+91 6302698521</a></span>
+                                </div>
                             </div>
                             <div class="social-item">
                                 <img src="assets/img/email.jpeg" alt="Email" class="social-icon" loading="lazy">
-                                <a href="mailto:janapati.sandeep.yadav@gmail.com"
-                                    target="_blank">janapati.sandeep.yadav@gmail.com</a>
+                                <div class="contact-detail">
+                                    <span class="contact-value"><a href="mailto:janapati.sandeep.yadav@gmail.com">janapati.sandeep.yadav@gmail.com</a></span>
+                                </div>
                             </div>
                             <div class="social-item">
                                 <a href="https://www.linkedin.com/in/janapatisandeep" target="_blank"
@@ -593,28 +621,48 @@
                                     <img src="assets/img/linkedin.jpg" alt="LinkedIn" class="social-icon"
                                         loading="lazy">
                                 </a>
-                                <a href="https://www.linkedin.com/in/janapatisandeep" target="_blank"
-                                    rel="noopener noreferrer">linkedin.com/in/janapatisandeep</a>
+                                <div class="contact-detail">
+                                    <a href="https://www.linkedin.com/in/janapatisandeep" target="_blank"
+                                        rel="noopener noreferrer">linkedin.com/in/janapatisandeep</a>
+                                </div>
                             </div>
                             <div class="social-item">
                                 <a href="https://github.com/sandeepjanapati" target="_blank" rel="noopener noreferrer">
                                     <img src="assets/img/github.png" alt="GitHub" class="social-icon" loading="lazy">
                                 </a>
-                                <a href="https://github.com/sandeepjanapati" target="_blank"
-                                    rel="noopener noreferrer">github.com/sandeepjanapati</a>
+                                <div class="contact-detail">
+                                    <a href="https://github.com/sandeepjanapati" target="_blank"
+                                        rel="noopener noreferrer">github.com/sandeepjanapati</a>
+                                </div>
                             </div>
                             <div class="social-item">
                                 <a href="https://www.kaggle.com/janapatisandeep" target="_blank"
                                     rel="noopener noreferrer">
                                     <img src="assets/img/kaggle.jpg" alt="Kaggle" class="social-icon" loading="lazy">
                                 </a>
-                                <a href="https://www.kaggle.com/janapatisandeep" target="_blank"
-                                    rel="noopener noreferrer">kaggle.com/janapatisandeep</a>
+                                <div class="contact-detail">
+                                    <a href="https://www.kaggle.com/janapatisandeep" target="_blank"
+                                        rel="noopener noreferrer">kaggle.com/janapatisandeep</a>
+                                </div>
                             </div>
+                        </div>
+                        <div id="contact-message" role="tabpanel" aria-labelledby="message-tab" hidden>
+                            <form id="contact-form">
+                                <div class="contact-form-names">
+                                    <input id="contact-first-name" name="firstName" aria-label="First name" placeholder="First name" autocomplete="given-name" maxlength="80" required>
+                                    <input id="contact-last-name" name="lastName" aria-label="Last name" placeholder="Last name" autocomplete="family-name" maxlength="80" required>
+                                </div>
+                                <input id="contact-email" name="email" aria-label="Email" placeholder="Email" type="email" autocomplete="email" inputmode="email" spellcheck="false" maxlength="254" required>
+                                <textarea id="contact-message-text" name="message" aria-label="Message" placeholder="Message" rows="4" maxlength="5000" required></textarea>
+                                <div class="contact-form-actions">
+                                    <button class="btn" type="submit" disabled>Send</button>
+                                </div>
+                            </form>
+                        </div>
                         </div>
                     </div>
                 </div>
-
+                </div>
             </section>
         </main>
     </div>

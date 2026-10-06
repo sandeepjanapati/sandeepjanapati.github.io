@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio website! This project showcases my skills, experiences, and academic journey in a professional and visually appealing manner.
 
-Access the website using : sandeepjanapati.in
+Access the website: [sandeepjanapati.in](https://sandeepjanapati.in)
 
 ## 🌟 Features
 

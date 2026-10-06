@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         swiper = new Swiper('.mySwiper', {
             effect: 'coverflow', slidesPerView: 'auto', centeredSlides: true,
             loop: true, speed: paused ? 0 : 750, spaceBetween: 24,
-            coverflowEffect: { rotate: 0, stretch: 0, depth: 95, modifier: 1, slideShadows: false },
+            coverflowEffect: { rotate: 0, stretch: 0, depth: 109.25, modifier: 1, slideShadows: false },
             grabCursor: true, watchSlidesProgress: true,
             keyboard: { enabled: true, onlyInViewport: true, pageUpDown: false },
             mousewheel: { forceToAxis: true, sensitivity: .8 },
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         counters.forEach(element => counterObserver.observe(element));
     }
 
-    // Existing phone/email click-to-copy behavior and messages are preserved.
+    // Copy buttons are separate from native phone/email link actions.
     const toastContainer = document.createElement('div');
     toastContainer.className = 'toast-container';
     toastContainer.setAttribute('aria-live', 'polite');
@@ -249,8 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!link) return;
         const label = link.protocol === 'tel:' ? 'Phone number' : 'Email address';
         const value = link.getAttribute('href').replace(/^(tel:|mailto:)/, '');
-        item.title = `Click to copy ${label}`;
-        item.classList.add('copyable');
         const icon = document.createElement('button');
         icon.type = 'button';
         icon.className = 'copy-icon';
@@ -267,12 +265,95 @@ document.addEventListener('DOMContentLoaded', () => {
         svg.append(path);
         icon.append(svg);
         icon.setAttribute('aria-label', `Copy ${label.toLowerCase()}`);
-        item.append(icon);
-        item.addEventListener('click', event => {
-            event.preventDefault();
+        icon.title = `Copy ${label.toLowerCase()}`;
+        link.parentElement.append(icon);
+        icon.addEventListener('click', () => {
             copy(value).then(() => toast(`${label} copied to clipboard!`))
                 .catch(() => toast('Failed to copy. Please try manually.'));
         });
+    });
+
+    // Frontend-only form: never transmit data or imply successful delivery.
+    const contactTabs = [...document.querySelectorAll('.contact-tabs [role="tab"]')];
+    const contactIndicator = document.createElement('span');
+    contactIndicator.className = 'contact-tab-indicator';
+    contactIndicator.setAttribute('aria-hidden', 'true');
+    document.querySelector('.contact-tabs').append(contactIndicator);
+    let contactIndicatorAnimation;
+    let selectedContactTab = null;
+    let contactPanelAnimation;
+    function selectContactTab(tab) {
+        if (tab === selectedContactTab) return;
+        const previousTab = selectedContactTab;
+        const previousTransform = getComputedStyle(contactIndicator).transform;
+        contactIndicatorAnimation?.cancel();
+        const targetPercent = contactTabs.indexOf(tab) * 100;
+        const nextTransform = `translateX(${targetPercent}%) scaleX(.94)`;
+        contactIndicator.style.transform = nextTransform;
+        if (previousTab) {
+            const direction = contactTabs.indexOf(tab) > contactTabs.indexOf(previousTab) ? 1 : -1;
+            contactIndicatorAnimation = animate(contactIndicator, [
+                { transform: previousTransform, offset: 0 },
+                { transform: `translateX(${targetPercent - direction * 42}%) scaleX(1.12) scaleY(.88)`, offset: .42 },
+                { transform: `translateX(${targetPercent}%) scaleX(.90) scaleY(1.04)`, offset: .78 },
+                { transform: nextTransform, offset: 1 }
+            ], { duration: 520, easing: 'cubic-bezier(.3, 0, .2, 1)' });
+        }
+        contactPanelAnimation?.cancel();
+        contactTabs.forEach(item => {
+            const selected = item === tab;
+            item.setAttribute('aria-selected', String(selected));
+            item.tabIndex = selected ? 0 : -1;
+            const panel = document.getElementById(item.getAttribute('aria-controls'));
+            panel.hidden = !selected;
+            panel.inert = !selected;
+            panel.style.visibility = selected ? 'visible' : 'hidden';
+        });
+        selectedContactTab = tab;
+        if (previousTab) {
+            const panel = document.getElementById(tab.getAttribute('aria-controls'));
+            contactPanelAnimation = animate(panel, [
+                { opacity: .45 },
+                { opacity: 1 }
+            ], { duration: 220 });
+        }
+    }
+    contactTabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectContactTab(tab));
+        tab.addEventListener('keydown', event => {
+            let next;
+            if (event.key === 'ArrowRight') next = (index + 1) % contactTabs.length;
+            if (event.key === 'ArrowLeft') next = (index + contactTabs.length - 1) % contactTabs.length;
+            if (event.key === 'Home') next = 0;
+            if (event.key === 'End') next = contactTabs.length - 1;
+            if (next === undefined) return;
+            event.preventDefault();
+            selectContactTab(contactTabs[next]);
+            contactTabs[next].focus();
+        });
+    });
+    document.querySelector('.contact-tabs').hidden = false;
+    selectContactTab(contactTabs[0]);
+    const contactEmail = document.querySelector('#contact-email');
+    function validateContactEmail() {
+        const value = contactEmail.value;
+        const [local = '', domain = ''] = value.split('@');
+        const valid = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(value)
+            && local.length <= 64 && !local.startsWith('.') && !local.endsWith('.') && !local.includes('..')
+            && domain.split('.').every(label => label.length <= 63 && !label.startsWith('-') && !label.endsWith('-'));
+        contactEmail.setCustomValidity(!value || valid ? '' : 'Enter a valid email address, such as name@example.com.');
+    }
+    contactEmail.addEventListener('input', validateContactEmail);
+    contactEmail.addEventListener('blur', () => {
+        contactEmail.value = contactEmail.value.trim();
+        validateContactEmail();
+        if (contactEmail.value) contactEmail.reportValidity();
+    });
+    document.querySelector('#contact-form').addEventListener('submit', event => {
+        event.preventDefault();
+        validateContactEmail();
+        event.currentTarget.reportValidity();
+        // Enable Send only when a real delivery endpoint is integrated.
     });
 
     // Scroll work is batched once per frame. Layout remains in normal document flow.
@@ -321,58 +402,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // An original mathematical wire surface, projected in 2D. No models or loading gate.
     const canvas = document.querySelector('#ambient-canvas');
     const context = canvas.getContext('2d');
-    // Letter strokes live in longitude/latitude coordinates on the same sphere.
-    // Only A's legs and I's stem are new: existing latitudes supply the crossbar.
-    const surfaceStrokes = [
-        // Endpoints anchor the arcs to the upper and lower ellipse guides.
-        [[-.70, 3], [-.70 + .44 / 3, 1], [-.70 + .88 / 3, -1], [-.26, -3]],
-        [[-.26, -3], [-.12, -1], [.02, 1], [.16, 3]],
-        // Constant longitude makes I a meridian arc, not an S-shaped flourish.
-        [[.64, -3], [.64, -1], [.64, 1], [.64, 3]]
-    ];
-    const guideStep = Math.PI * .93 / 18;
-    function surfaceVector([u, v]) {
-        const latitude = v * guideStep;
-        return [Math.cos(latitude) * Math.sin(u), Math.sin(latitude), Math.cos(latitude) * Math.cos(u)];
-    }
-    const strokeArcs = surfaceStrokes.map(points => {
-        const start = surfaceVector(points[0]);
-        const end = surfaceVector(points[3]);
-        const dot = start.reduce((sum, value, i) => sum + value * end[i], 0);
-        const angle = Math.acos(Math.max(-1, Math.min(1, dot)));
-        return { start, end, angle, sine: Math.sin(angle) };
-    });
-    function sampleStroke(points, t) {
-        // Short circular surface arcs defined by their contact points, not by
-        // interpolating longitude/latitude (which over-bowed the left A leg).
-        // These tilted great-circle arcs need not pass through the globe's poles.
-        const strokeIndex = surfaceStrokes.indexOf(points);
-        const arc = strokeArcs[strokeIndex];
-        const a = Math.sin((1 - t) * arc.angle) / arc.sine;
-        const b = Math.sin(t * arc.angle) / arc.sine;
-        const vector = arc.start.map((value, i) => value * a + arc.end[i] * b);
-        let longitude = Math.atan2(vector[0], vector[2]);
-        // Bow A's right leg toward I, opening its concave side toward A's left leg.
-        // The smooth offset vanishes at both
-        // ellipse contacts; crossbar intersections use this same sampler.
-        if (strokeIndex === 1) longitude += .09 * Math.sin(Math.PI * t);
-        return [longitude, Math.asin(Math.max(-1, Math.min(1, vector[1]))) / guideStep];
-    }
-    const sampledStrokes = surfaceStrokes.map(points =>
-        Array.from({ length: 65 }, (_, i) => sampleStroke(points, i / 64)));
-    // Locate the actual A-leg intersections with latitude +1. The illuminated
-    // crossbar ends at those intersections, not at arbitrary screen positions.
-    const crossbarEnds = surfaceStrokes.slice(0, 2).map(points => {
-        let low = 0;
-        let high = 1;
-        const ascending = points[3][1] > points[0][1];
-        for (let i = 0; i < 24; i++) {
-            const mid = (low + high) / 2;
-            if ((sampleStroke(points, mid)[1] < 1) === ascending) low = mid;
-            else high = mid;
-        }
-        return sampleStroke(points, (low + high) / 2)[0];
-    });
     let width = 0;
     let height = 0;
     let frame = 0;
@@ -385,17 +414,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function automaticYaw() {
         return Math.sin((sceneProgress * .32 + time * .085) * .3) * .22;
     }
-    const rotationRoll = -.4;
+    const rotationRoll = +.4;
     let manuallyRotated = false;
     let globeBounds = null;
     let displayedYaw = 0;
-    let restingHighlights = null;
-    let dragHighlights = null;
     let interactionFrame = 0;
     function takeControl() {
         if (!manuallyRotated) {
             rotationYaw = displayedYaw;
-            dragHighlights = restingHighlights;
         }
         manuallyRotated = true;
         cancelAnimationFrame(frame);
@@ -466,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerX = width * (compact ? .87 : .85);
         const centerY = height * .48;
         const phase = sceneProgress * .32 + time * .085;
-        // Quality reduction changes tessellation, never guide spacing or AI size.
+        // Quality reduction changes tessellation, never guide spacing.
         const rows = 19;
         const columns = quality === 1 ? (compact ? 64 : 96) : 48;
         // North–south axis is fixed; automatic motion and gestures only change yaw.
@@ -476,7 +502,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const yaw = manuallyRotated ? rotationYaw : automaticYawOffset + automaticYaw();
         displayedYaw = yaw;
         globeBounds = { x: centerX, y: centerY, radius: radius * .58 };
-        const latitudeStep = Math.PI * .93 / (rows - 1);
         // A single projection owns orientation, curvature, depth and movement.
         function rotatedPoint(longitude, latitude) {
             const x = Math.cos(latitude) * Math.cos(longitude + yaw);
@@ -496,17 +521,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const longitude = column / columns * Math.PI * 2;
                 const nextLongitude = (column + 1) / columns * Math.PI * 2;
                 const midLongitude = (longitude + nextLongitude) / 2;
-                const u = Math.PI / 2 - midLongitude;
-                const guide = row - Math.floor(rows / 2);
-                // Recede competing threads locally, without erasing any ellipse.
-                // Front upper/lower guides and the crossbar remain undimmed.
-                const withinLetters = Math.abs(guide) < 3 && guide !== 1;
                 const foreground = rotatedPoint(midLongitude, latitude)[2] > 0;
-                // Feather the contrast change; no rectangular dim patch around AI.
-                const edgeDistance = Math.min(u + .82, .92 - u);
-                const blend = Math.max(0, Math.min(1, edgeDistance / .18));
-                const smoothBlend = blend * blend * (3 - 2 * blend);
-                const emphasis = (foreground ? 1 : .72) * (withinLetters ? 1 - .38 * smoothBlend : 1);
+                const emphasis = foreground ? 1 : .72;
                 context.strokeStyle = `rgba(94, 165, 231, ${(compact ? .085 : .14) * emphasis})`;
                 context.beginPath();
                 context.moveTo(...project(longitude, latitude));
@@ -515,83 +531,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 context.stroke();
             }
         }
-        context.save();
-        // Slight optical compensation keeps fine strokes intact on small screens.
-        context.lineWidth = compact ? .9 : .8;
-        context.lineCap = 'round';
-        context.lineJoin = 'round';
-        sampledStrokes.forEach((points, index) => {
-            const projected = points.map(([u, v]) => project(Math.PI / 2 - u, v * latitudeStep));
-            const ink = context.createLinearGradient(...projected[0], ...projected[projected.length - 1]);
-            const opacity = (compact ? .28 : .34) * (index === 2 ? 1.04 : 1);
-            ink.addColorStop(0, `rgba(94, 165, 231, ${opacity * .58})`);
-            ink.addColorStop(.22, `rgba(94, 165, 231, ${opacity})`);
-            ink.addColorStop(.78, `rgba(94, 165, 231, ${opacity})`);
-            ink.addColorStop(1, `rgba(94, 165, 231, ${opacity * .58})`);
-            context.strokeStyle = ink;
-            // Stroke once: overlapping round caps previously made tiny bright knots.
-            context.beginPath();
-            projected.forEach((point, step) => {
-                if (step === 0) context.moveTo(...point); else context.lineTo(...point);
-            });
-            context.stroke();
-        });
-        // Highlight existing latitudes: A's crossbar and small curved I caps.
-        // I caps are centered on the stem's actual surface endpoints.
-        context.strokeStyle = `rgba(94, 165, 231, ${compact ? .13 : .19})`;
-        const iTop = surfaceStrokes[2][0];
-        const iBottom = surfaceStrokes[2][3];
-        // Match visible curved lengths, not angular spans: perspective and
-        // latitude otherwise make equal longitude spans look unequal.
-        function arcLength(start, end, latitude) {
-            let previous = project(Math.PI / 2 - start, latitude * latitudeStep);
-            let length = 0;
-            for (let step = 1; step <= 32; step++) {
-                const u = start + (end - start) * step / 32;
-                const point = project(Math.PI / 2 - u, latitude * latitudeStep);
-                length += Math.hypot(point[0] - previous[0], point[1] - previous[1]);
-                previous = point;
+        // Subdued meridians reveal yaw without competing with latitude rings.
+        const meridians = 12;
+        const segments = columns / 2;
+        for (let meridian = 0; meridian < meridians; meridian++) {
+            const longitude = meridian / meridians * Math.PI * 2;
+            for (let segment = 0; segment < segments; segment++) {
+                const latitude = (segment / segments - .5) * Math.PI;
+                const nextLatitude = ((segment + 1) / segments - .5) * Math.PI;
+                const depth = rotatedPoint(longitude, (latitude + nextLatitude) / 2)[2];
+                const opacity = (compact ? .035 : .055) * (.35 + .65 * (depth + 1) / 2);
+                context.strokeStyle = `rgba(94, 165, 231, ${opacity})`;
+                context.beginPath();
+                context.moveTo(...project(longitude, latitude));
+                context.lineTo(...project(longitude, nextLatitude));
+                context.lineWidth = .8;
+                context.stroke();
             }
-            return length;
         }
-        const crossbarLength = arcLength(crossbarEnds[0], crossbarEnds[1], 1);
-        function matchingCap([center, latitude]) {
-            let low = 0;
-            let high = .8;
-            for (let iteration = 0; iteration < 14; iteration++) {
-                const half = (low + high) / 2;
-                if (arcLength(center - half, center + half, latitude) < crossbarLength) low = half;
-                else high = half;
-            }
-            const half = (low + high) / 2;
-            return [center - half, center + half, latitude];
-        }
-        // Preserve the attached letter geometry when automatic motion resumes.
-        const highlights = dragHighlights || [
-            [crossbarEnds[0], crossbarEnds[1], 1],
-            matchingCap(iTop),
-            matchingCap(iBottom)
-        ];
-        restingHighlights = highlights;
-        highlights.forEach(([start, end, latitude]) => {
-            const ink = context.createLinearGradient(
-                ...project(Math.PI / 2 - start, latitude * latitudeStep),
-                ...project(Math.PI / 2 - end, latitude * latitudeStep));
-            const opacity = compact ? .14 : .19;
-            ink.addColorStop(0, `rgba(94, 165, 231, ${opacity * .45})`);
-            ink.addColorStop(.2, `rgba(94, 165, 231, ${opacity})`);
-            ink.addColorStop(.8, `rgba(94, 165, 231, ${opacity})`);
-            ink.addColorStop(1, `rgba(94, 165, 231, ${opacity * .45})`);
-            context.strokeStyle = ink;
-            context.beginPath();
-            for (let step = 0; step <= 32; step++) {
-                const u = start + step / 32 * (end - start);
-                const point = project(Math.PI / 2 - u, latitude * latitudeStep);
-                if (step === 0) context.moveTo(...point); else context.lineTo(...point);
-            }
-            context.stroke();
-        });
-        context.restore();
         // Fine architectural guide lines, deliberately not a particle storm.
         context.strokeStyle = 'rgba(162, 192, 225, .055)';
         context.beginPath();
