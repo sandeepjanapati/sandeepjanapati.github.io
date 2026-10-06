@@ -362,15 +362,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeSectionId = sections[0].id;
     let onGlobeSectionChange = null;
     let onGlobeScroll = null;
+    const header = document.querySelector('.header');
+    function contentViewport() {
+        const top = mobile.matches ? header.getBoundingClientRect().height : 0;
+        return { top, height: Math.max(1, innerHeight - top) };
+    }
     function updateScroll() {
         scrollFrame = 0;
         let active = sections[0];
-        const height = innerHeight;
+        const { top: headerHeight, height } = contentViewport();
         sections.forEach((section, index) => {
             const rect = section.getBoundingClientRect();
-            const progress = Math.max(0, Math.min(1, (height * .8 - rect.top) / (rect.height + height * .3)));
+            const contentTop = rect.top - headerHeight;
+            const progress = Math.max(0, Math.min(1, (height * .8 - contentTop) / (rect.height + height * .3)));
             section.style.setProperty('--section-progress', progress.toFixed(3));
-            if (rect.top <= height * .45) { active = section; sceneProgress = index + progress; }
+            if (contentTop <= height * .45) { active = section; sceneProgress = index + progress; }
         });
         if (active.id !== activeSectionId) {
             activeSectionId = active.id;
@@ -385,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 indicator.style.setProperty('--nav-height', `${link.offsetHeight}px`);
             } else link.removeAttribute('aria-current');
         });
-        const distance = document.documentElement.scrollHeight - height;
+        const distance = document.documentElement.scrollHeight - innerHeight;
         const pageProgress = distance > 0 ? Math.max(0, Math.min(1, scrollY / distance)) : 0;
         profileProgress.style.strokeDashoffset = String(100 * (1 - pageProgress));
         backToTop.classList.toggle('show', scrollY > 300);
@@ -468,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Native momentum supplies the glide; do not add a second inertia impulse.
     document.addEventListener('wheel', event => {
         if (event.ctrlKey || event.metaKey || !event.cancelable || !overGlobe(event)) return;
-        const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? innerHeight : 1;
+        const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? contentViewport().height : 1;
         const dx = Math.max(-180, Math.min(180, event.deltaX * unit));
         const dy = Math.max(-180, Math.min(180, event.deltaY * unit));
         if (!dx && !dy) return;
@@ -488,9 +494,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!context) return;
         context.clearRect(0, 0, width, height);
         const compact = width <= 900;
-        const radius = Math.min(width * (compact ? .55 : .29), height * .49, 480);
+        const viewport = contentViewport();
+        const radius = Math.min(width * (compact ? .55 : .29), viewport.height * .49, 480);
         const centerX = width * (compact ? .87 : .85);
-        const centerY = height * .48;
+        const centerY = viewport.top + viewport.height * .48;
         const phase = sceneProgress * .32 + time * .085;
         // Quality reduction changes tessellation, never guide spacing.
         const rows = 19;
