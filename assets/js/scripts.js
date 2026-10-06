@@ -20,6 +20,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const main = document.querySelector('main');
     const ownedAnimations = new Set();
 
+    // Fit the complete content, rather than clipping or scrolling fixed-height cards.
+    const fittedCards = [...document.querySelectorAll('#projects .swiper-slide, .education-box')];
+    function fitCards() {
+        fittedCards.forEach(card => {
+            const content = card.querySelector('.project-content');
+            const fits = () => {
+                const scale = Number(card.style.getPropertyValue('--card-fit')) || 1;
+                if (content) {
+                    return content.scrollHeight * scale <= card.clientHeight - 2;
+                }
+                const style = getComputedStyle(card);
+                const children = [...card.children];
+                const heights = children.map(child => child.offsetHeight * scale);
+                const stacked = mobile.matches && innerWidth <= 560;
+                const used = stacked ? heights.reduce((a, b) => a + b, 0) + parseFloat(style.rowGap) : Math.max(...heights);
+                return used + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom) <= card.clientHeight - 2;
+            };
+            card.style.setProperty('--card-fit', '1');
+            if (fits()) return;
+            let low = .1;
+            let high = 1;
+            for (let i = 0; i < 12; i++) {
+                const mid = (low + high) / 2;
+                card.style.setProperty('--card-fit', String(mid));
+                if (fits()) low = mid; else high = mid;
+            }
+            card.style.setProperty('--card-fit', String(low));
+        });
+    }
+    let fitFrame = 0;
+    function scheduleCardFit() {
+        if (fitFrame) return;
+        fitFrame = requestAnimationFrame(() => { fitFrame = 0; fitCards(); });
+    }
+    if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(scheduleCardFit);
+        fittedCards.forEach(card => observer.observe(card));
+    }
+    addEventListener('resize', scheduleCardFit, { passive: true });
+    document.fonts?.ready.then(scheduleCardFit);
+    document.querySelectorAll('.education-box img').forEach(image => image.addEventListener('load', scheduleCardFit));
+    scheduleCardFit();
+
     function animate(element, frames, options = {}) {
         if (paused || !element.animate) return;
         const animation = element.animate(frames, {

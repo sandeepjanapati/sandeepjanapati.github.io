@@ -517,7 +517,7 @@ section:not(#home) { padding-top: clamp(20px, calc(4 * var(--content-unit)), 48p
 }
 /* Exact card proportions use the unobstructed viewport, including borders. */
 #projects .swiper-slide { height: calc(60 * var(--content-unit)); }
-#projects .project-content { height: 100%; padding-block: 0; overflow-y: auto; scrollbar-width: thin; }
+#projects .project-content { height: auto; width: calc(100% / var(--card-fit, 1)); flex-shrink: 0; padding-block: 0; overflow: visible; transform: scale(var(--card-fit, 1)); transform-origin: top left; align-self: flex-start; }
 #projects .project-content > * { flex-shrink: 0; }
 /* Keep the achievements heading unchanged; size its content to the viewport. */
 #achievements { min-height: calc(100 * var(--content-unit)); padding-bottom: clamp(20px, calc(4 * var(--content-unit)), 48px); display: flex; flex-direction: column; }
@@ -535,7 +535,8 @@ section:not(#home) { padding-top: clamp(20px, calc(4 * var(--content-unit)), 48p
     #achievements li { padding-block: 10px; line-height: 1.45; }
 }
 /* Academic hierarchy: institution, credentials, then supporting coursework. */
-.education-box { height: calc(70 * var(--content-unit)); min-height: 0; overflow-y: auto; scrollbar-width: thin; align-items: center; padding-block: clamp(20px, 2vw, 28px); }
+.education-box { height: calc(70 * var(--content-unit)); min-height: 0; overflow: visible; align-items: center; padding-block: clamp(20px, 2vw, 28px); }
+.education-box > * { zoom: var(--card-fit, 1); }
 .education-details { min-width: 0; }
 .education-details .education-eyebrow {
     color: #9db5ce; font-size: .7rem; font-weight: 600;
